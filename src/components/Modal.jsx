@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-
+import { createPortal } from 'react-dom';
 import './modal.css';
 function Modal({ children }) {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +13,7 @@ function Modal({ children }) {
   };
   const dialog = useRef();
 
-  return (
+  return createPortal(
     <>
       <dialog
         ref={dialog}
@@ -32,10 +32,11 @@ function Modal({ children }) {
         onClick={() => {
           showModalHandler();
         }}
-      >
+        >
         Show Modal
       </button> */}
-    </>
+    </>,
+    document.getElementById('modal')
   );
 }
 
