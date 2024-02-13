@@ -28,13 +28,13 @@ function Modal({ children }) {
         <div className="modal-content">{children}</div>
       </dialog>
       {/* Button for testing */}
-      <button
+      {/* <button
         onClick={() => {
           showModalHandler();
         }}
       >
         Show Modal
-      </button>
+      </button> */}
     </>
   );
 }
