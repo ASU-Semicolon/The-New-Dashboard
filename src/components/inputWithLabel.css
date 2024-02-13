@@ -1,0 +1,31 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.label {
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: -25px;
+}
+
+input {
+    padding: 12px;
+    padding-left: 16px;
+    width: 270px;
+    height: 20px;
+    border-radius: 7px;
+    margin-top: 6px;
+}
+
+textarea {
+    padding: 12px;
+    padding-left: 16px;
+    width: 270px;
+    height: 60px;
+    border-radius: 7px;
+    margin-top: 6px;
+}
