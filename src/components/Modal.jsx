@@ -1,41 +1,35 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.css';
-function Modal({ children }) {
-  const [showModal, setShowModal] = useState(false);
+function Modal({ children, showModal, setShowModal }) {
+  const dialog = useRef();
   const showModalHandler = () => {
-    setShowModal(true);
     dialog.current.showModal();
   };
   const hideModalHandler = () => {
-    setShowModal(false);
     dialog.current.close();
   };
-  const dialog = useRef();
+  useEffect(() => {
+    if (showModal) {
+      showModalHandler();
+    } else if (!showModal && dialog) {
+      hideModalHandler();
+    }
+  }, [showModal]);
 
   return createPortal(
-    <>
-      <dialog
-        ref={dialog}
-        onClick={(e) => {
-          if (e.target.className === 'modal') {
-            hideModalHandler();
-            console.log(e.target);
-          }
-        }}
-        className="modal"
-      >
-        <div className="modal-content">{children}</div>
-      </dialog>
-      {/* Button for testing */}
-      {/* <button
-        onClick={() => {
-          showModalHandler();
-        }}
-        >
-        Show Modal
-      </button> */}
-    </>,
+    <dialog
+      ref={dialog}
+      onClick={(e) => {
+        if (e.target.className === 'modal') {
+          setShowModal(false);
+        }
+      }}
+      className="modal"
+    >
+      <div className="modal-content">{children}</div>
+    </dialog>,
+
     document.getElementById('modal')
   );
 }

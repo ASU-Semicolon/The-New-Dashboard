@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
+//import for testing
+// import Modal from './components/Modal';
 
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  // Modal state
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="App">
@@ -29,6 +33,23 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      {/* Buttons for testing */}
+      {/* <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        Show Modal
+      </button>
+      <Modal setShowModal={setShowModal} showModal={showModal}>
+        <button
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          hide
+        </button>
+      </Modal> */}
     </div>
   );
 }
