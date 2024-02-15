@@ -6,7 +6,7 @@ url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..
     float: left;
 }
 
-.logo:active{
+.logo:active, .enteredtext{
     animation: shake 0.4s linear 0s ;
 }
 
@@ -51,12 +51,14 @@ url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..
         margin-left: 0rem;
     }
     25% {
-        margin-left: 0.2rem;
+        margin-left: 0.8rem;
     }
     75% {
-        margin-left: -0.2rem;
+        margin-left: -0.8rem;
     }
     100% {
         margin-left: 0rem;
     }
 }
+
+

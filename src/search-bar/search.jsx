@@ -5,22 +5,19 @@ import React, { useEffect } from 'react';
 
 
 const Search = () => {
-  let textclass='text';
-  let logoclass='logo';
-
-  // useEffect(() => {
-  //   document.addEventListener('keydown',(e) =>{
-  //     if(e.key === 13){
-  //     textclass+=" enteredtext";
-  //     logoclass+=" enteredlogo";}});
-  // }
-  // )
-
+  
+      const eventkey = (event) => {
+      if(event.keyCode === 13){
+        document.getElementById("Text").classList.add("enteredtext")
+        setTimeout(function(){document.getElementById("Text").classList.remove("enteredtext")
+      },500)
+    }      
+    }
 
   return (
      <div className='search-bar-container'>
-     <img src={searchlogo} className={logoclass} alt="search logo" />
-     <input type={textclass} className='text' placeholder="Search" />
+     <img src={searchlogo} className="logo" alt="search logo" />
+     <input type='text' id="Text" className="text" placeholder="Search" onKeyDown={(e) => eventkey(e)}/>
      </div>
   )
 }
