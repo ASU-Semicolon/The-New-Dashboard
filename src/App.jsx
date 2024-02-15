@@ -1,9 +1,9 @@
-import Search from './search-bar/search.jsx';
+import SearchBar from "./components/search-bar/search.component.jsx";
 
 function App() {  
 return (
     <div className='App'>
-        <Search />
+        <SearchBar />
     </div>
 );
 }

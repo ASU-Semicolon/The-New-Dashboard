@@ -2,22 +2,22 @@
 @import 
 url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-.logo{
+.logo-search{
     float: left;
 }
 
-.logo:active, .enteredtext{
+.logo-search:active, .enteredtext{
     animation: shake 0.4s linear 0s ;
 }
 
 
- .logo:hover{
+.logo-search:hover{
     width: 18px;
     height: 18px;
 
 }
 
-.text{
+.text-search{
     color: #A4A4A4;
     background-color:#080808 ;
     border: 0px;
