@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import "./modal.css";
+import "./modal.style.css";
 function Modal({ children, showModal, setShowModal }) {
     const dialog = useRef();
     const showModalHandler = () => {
@@ -25,12 +25,15 @@ function Modal({ children, showModal, setShowModal }) {
                     setShowModal(false);
                 }
             }}
+            onClose={() => {
+                setShowModal(false);
+            }}
             className="modal"
         >
             <div className="modal-content">{children}</div>
         </dialog>,
 
-        document.getElementById("modal"),
+        document.getElementById("modal")
     );
 }
 
