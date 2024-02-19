@@ -1,36 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-@import 
-url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
-.logo-search{
+.logo-search {
     float: left;
 }
 
-.logo-search:active, .entered-text{
-    animation: shake 0.4s linear 0s ;
+.logo-search:active,
+.entered-text {
+    animation: shake 0.4s linear 0s;
 }
 
-
-.logo-search:hover{
+.logo-search:hover {
     width: 18px;
     height: 18px;
-
 }
 
-.text-search{
-    color: #A4A4A4;
-    background-color:#080808 ;
+.text-search {
+    color: #a4a4a4;
+    background-color: #080808;
     border: 0px;
     width: 100%;
     font-family: "Rubik", "sans-serif";
     font-size: 1rem;
     font-weight: 400;
     outline: none;
-
-
 }
 
-.search-bar-container{
+.search-bar-container {
     background-color: #080808;
     width: 40vw;
     border-radius: 3px;
@@ -40,13 +35,10 @@ url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..
     align-items: center;
     gap: 0.7rem;
     justify-content: start;
-    border:0.2px #A4A4A4 solid ;
+    border: 0.2px #a4a4a4 solid;
 }
 
-
-
-
-@keyframes shake{
+@keyframes shake {
     0% {
         margin-left: 0rem;
     }
@@ -60,5 +52,3 @@ url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..
         margin-left: 0rem;
     }
 }
-
-
