@@ -1,62 +1,62 @@
 .loader-container {
-  display: grid;
-  place-content: center;
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.4, 0.1, 0.6, 1);
-  pointer-events: none;
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0.1, 0.6, 1);
+    pointer-events: none;
 }
 .loader-container.active {
-  opacity: 1;
-  pointer-events: all;
+    opacity: 1;
+    pointer-events: all;
 }
 .section-loader {
-  position: relative;
+    position: relative;
 }
 .page-loader {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
 }
 .fade-circle {
-  width: 100px;
-  aspect-ratio: 1/1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 100%;
-  animation: fade 1.5s cubic-bezier(0.4, 0.1, 0.6, 1) infinite;
-  z-index: -1;
+    width: 100px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    animation: fade 1.5s cubic-bezier(0.4, 0.1, 0.6, 1) infinite;
+    z-index: -1;
 }
 .seconde-cirlce {
-  animation-delay: 300ms;
+    animation-delay: 300ms;
 }
 .loader-logo {
-  width: 120px;
-  background-color: black;
-  border-radius: 50%;
-  animation: scale 1.5s cubic-bezier(0.4, 0.1, 0.6, 1) alternate-reverse
-    infinite;
+    width: 120px;
+    background-color: black;
+    border-radius: 50%;
+    animation: scale 1.5s cubic-bezier(0.4, 0.1, 0.6, 1) alternate-reverse
+        infinite;
 }
 @keyframes fade {
-  from {
-    opacity: 0.5;
-    box-shadow: 0 0 60px 0px #fba21294;
-  }
-  to {
-    opacity: 0.01;
-    box-shadow: 0 0 60px 300px #fba21210;
-  }
+    from {
+        opacity: 0.5;
+        box-shadow: 0 0 60px 0px #fba21294;
+    }
+    to {
+        opacity: 0.01;
+        box-shadow: 0 0 60px 300px #fba21210;
+    }
 }
 @keyframes scale {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.4);
-  }
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.4);
+    }
 }
