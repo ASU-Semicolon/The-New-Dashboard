@@ -49,6 +49,15 @@ a {
     padding: 6rem 3rem 0;
     transition: right 0.4s;
   }
+
+  .show-menu .nav__menu {
+    right: 0;
+  }
+
+  .show-menu .nav__menu ul {
+    display: block;
+    width: 200px;
+  }
 }
 
 @media screen and (min-width: 1150px) {
