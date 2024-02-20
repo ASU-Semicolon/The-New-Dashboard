@@ -2,13 +2,14 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Button from './Components/Button';
+import Button from './Components/Button/Button.component';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -29,10 +30,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Button styleProp="primary" >Button</Button>
-      <Button styleProp="secondary" >Button</Button>
-      <Button styleProp="transparent" >button</Button>
-      <Button styleProp="Redtransparent" >button</Button>
+
+      <Button select="warning" rounded={true} outline={true} medium >warning</Button>
+      <Button select="secondary" rounded outline={false} large>secondary</Button>
+      <Button select="primary" outline={false} rounded={false} small>primary</Button>
     </div>
   )
 }

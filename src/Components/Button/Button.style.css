@@ -1,0 +1,61 @@
+.primary {
+  background: #FBA312;
+  border: solid #FBA312;
+  color: #FBA312;
+}
+
+.secondary {
+  background: #ffffff;
+  border: solid #ffffff;
+  color: #ffffff;
+}
+
+.warning {
+  background: #9A1212; 
+  color: #9A1212; 
+  border: solid #9A1212; 
+}
+
+.outline {
+  background: rgba(0, 0, 0, 0);
+}
+
+.button {
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-weight:500;
+  border-radius: 0.5px;
+  padding-top: 5px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.button:active,.button:focus,.button:hover,button {
+  transform: scale(0.95); 
+  outline: none !important;
+  box-shadow: none !important;
+
+}
+
+.rounded {
+  border-radius: 10px;
+}
+.small{
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 15px;
+  padding-right: 15px;
+  }
+.medium{
+  font-size: 17px;
+  height: max-content;
+  
+}
+.large{
+  font-size: 20px;
+  width: 300px;
+}
