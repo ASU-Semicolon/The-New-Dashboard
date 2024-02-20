@@ -1,13 +1,13 @@
 import "./card.style.css";
 /**
- *
- * @param {string} title - The title of the Card
- * @param {string} size - The Size of card expected value either small or big 
- * @param {object} data - The data will be displayed in card it will be represented as key: value 
+ * @param {Object} props
+ * @param {String} props.title
+ * @param {Object<string, string>} props.data
+ * @param {"small" | "big"} props.size
+ * The data will be displayed in card it will be represented as key: value
  * if data has one prop it will display its value only
- 
  */
-function Card({ title, data, size }) {
+function Card({ title, data, size = "big" }) {
     const isDataMultiple = Object.keys(data).length > 1;
     const dataList = (
         <div className="card-list">
