@@ -1,0 +1,27 @@
+.grid {
+    display: grid;
+    column-gap: 1.125rem;
+    row-gap: 1.6rem;
+    background-color: inherit;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.big.grid {
+    max-width: 64.125rem;
+    grid-template-columns: repeat(auto-fill, 20.625rem);
+}
+.small.grid {
+    max-width: 56.25rem;
+    grid-template-columns: repeat(auto-fill, 18rem);
+}
+.grid .fallbackText {
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    grid-column: 1/-1;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 4rem 0;
+}
