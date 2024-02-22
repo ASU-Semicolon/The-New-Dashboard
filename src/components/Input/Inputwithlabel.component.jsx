@@ -2,12 +2,12 @@ import "./inputwithlabel.style.css";
 function InputWithLabel({ Label, placeholder, multiline }) {
     return (
         <div className="input">
-            <label className="label">{Label}</label>
+            <label className="label" htmlFor="labelId">{Label}</label>
             {
                 multiline ? (
-                    <textarea placeholder={placeholder} />
+                    <textarea className="inputBar" placeholder={placeholder} />
                 ):(
-                    <input type="text" placeholder={placeholder}/>
+                    <input className = "inputBar" type="text" id="labelId" placeholder={placeholder}/>
                 ) 
             }
            
