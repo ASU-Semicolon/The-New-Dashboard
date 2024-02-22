@@ -1,0 +1,47 @@
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 5vw;
+    font-family: "Rubik", "sans-serif";
+
+}
+
+.add-user-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem;
+    height: 5vh;
+    width: 18vh;
+    background-color: #FBA312;
+    border-radius: 0.25rem;
+    border: 0px;
+    font-size: 2vh;
+    transition:
+    background-color 0s,
+    color 0s;
+
+
+}
+
+.add-user-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgb(255,255,255,0.1);
+    background: rgb(211, 140, 46);
+
+}
+
+.add-user-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(255,255,255,0.2);
+}
+
+
+.header-text{
+    color:#FFFFFF;
+    font-size: 2.5em;
+    font-weight: 400;
+
+}
+
