@@ -26,14 +26,14 @@
 }
 
 .add-user-btn:hover {
-    transform: translateY(-5px);
+    transform: translateY(-1.5px);
     box-shadow: 0 10px 20px rgb(255,255,255,0.1);
     background: rgb(211, 140, 46);
 
 }
 
 .add-user-btn:active {
-    transform: translateY(-1px);
+    transform: translateY(0px);
     box-shadow: 0 5px 10px rgb(255,255,255,0.2);
 }
 
