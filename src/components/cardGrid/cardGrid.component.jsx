@@ -5,7 +5,7 @@ import "./cardGrid.style.css";
  *
  * @component
  * @param {Object} props - The component properties.
- * @param {Array} props.cards - An array of card objects to be rendered in the grid
+ * @param {Array<Card>} props.cards - An array of card objects to be rendered in the grid
  * @param {string} [props.fallbackText="No Data Available Yet!"] - The text to display when no cards are available.
  *  @param {"small" | "big"} props.gridSize -The size of gird
  *  @param {"small" | "big"} props.cardSize -The size of cards
