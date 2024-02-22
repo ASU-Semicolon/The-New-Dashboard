@@ -3,37 +3,34 @@
     flex-direction: column;
     position: relative;
     padding-bottom: 2.6rem;
-
-  }
-  .label {
-    color:white;
+}
+.label {
+    color: white;
     font-size: 1.1rem;
     position: absolute;
     top: -2rem;
-    font-family: sans-serif;;
-  }
-  
-  ::placeholder {
+    font-family: sans-serif;
+}
+
+::placeholder {
     font-size: 0.9rem;
     font-family: sans-serif;
-  }
-  
-  input,
-  textarea {
+}
+
+input,
+textarea {
     padding: 0.7rem;
     padding-left: 1rem;
     width: 18rem;
-    height: 1.5rem; 
+    height: 1.5rem;
     border-radius: 0.5rem;
     margin-top: 0.2rem;
-    color: white; 
-    background-color: #222; 
-    border: 1px solid black; 
-  }
-  
-  textarea {
-    height: 3rem; 
-    resize: vertical;
-  }
-  
+    color: white;
+    background-color: #222;
+    border: 1px solid black;
+}
 
+textarea {
+    height: 3rem;
+    resize: vertical;
+}

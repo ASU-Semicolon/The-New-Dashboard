@@ -33,7 +33,7 @@ function Modal({ children, showModal, setShowModal }) {
             <div className="modal-content">{children}</div>
         </dialog>,
 
-        document.getElementById("modal")
+        document.getElementById("modal"),
     );
 }
 
