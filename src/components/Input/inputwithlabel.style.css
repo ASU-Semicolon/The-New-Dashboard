@@ -21,9 +21,13 @@
     border-radius: 0.5rem;
     margin-top: 0.2rem;
     color: white; 
-    background-color: #222; 
-    border: 1px solid black; 
+    background-color: #080808;
+ 
+    border: 1px solid 
+    #3F3F3F; 
   }
-  
+  .inputBar.textarea{
+    resize: vertical;
+  }
   
 
