@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.style.css';
 import classNames from 'classnames'; 
 
-function Button({ children, select , rounded , outline , small , medium , large}) {
+function Button({ children , select = 'secondary' , rounded =true , outline = true , small = true , large = false , onClick = () => {console.log('Button Clicked')}}) {
     const classes = classNames( { 
       'button': true,
       'primary': select === 'primary' ,
@@ -11,7 +11,6 @@ function Button({ children, select , rounded , outline , small , medium , large}
       'rounded': rounded,
       'outline': outline,
       'small': small,
-      'medium': medium,
       'large': large
     })
 
@@ -19,14 +18,18 @@ function Button({ children, select , rounded , outline , small , medium , large}
     ? (select === 'primary' ? '#FBA312' :
         select === 'secondary' ? '#ffffff' :
         select === 'warning' ? '#9A1212' :
-        '#ffffff') // Default to white if no specific type is provided
-    : '#000000'; // Black color when outline is false
-  
+        '#ffffff')
+    : '#000000'; 
+ 
+
     return (
-      <>
-          <button className={classes} style={{ color: textColor }}> {children} </button>
+      <>       
+        <button className={classes} style={{color:textColor}} onClick={onClick}>
+          {children}
+        </button>
       </>
+
     );
-  }
+}
 
 export default Button;

@@ -3,38 +3,38 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Button from './Components/Button/Button.component';
-
+import {IoBasket} from 'react-icons/io5';
+import {IoAlarm} from 'react-icons/io5';
+import {IoClose} from 'react-icons/io5';
 function App() {
   const [count, setCount] = useState(0)
+  const showAlert = () => {
+    alert("I'm an alert");
+  }
 
   return (
     <div className="App">
 
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Button select="secondary" outline={true} rounded={false} small>secondary</Button>&nbsp;&nbsp;&nbsp;
+      <Button select="secondary" rounded={false} outline={false} small onClick={showAlert} ><IoAlarm></IoAlarm>secondary</Button>&nbsp;&nbsp;&nbsp;
+     
 
-      <Button select="warning" rounded={true} outline={true} medium >warning</Button>
-      <Button select="secondary" rounded outline={false} large>secondary</Button>
-      <Button select="primary" outline={false} rounded={false} small>primary</Button>
+      <Button select="primary" outline={true} rounded={false} small><IoBasket></IoBasket>secondary</Button>&nbsp;&nbsp;&nbsp;
+      <Button select="primary" rounded={false} outline={false} small onClick={showAlert} ><IoClose></IoClose>secondary</Button>&nbsp;&nbsp;&nbsp;
+
+
+      <Button select="warning" outline={true} rounded={false} small><IoBasket></IoBasket>warning</Button>&nbsp;&nbsp;&nbsp;
+      <Button select="warning" rounded={false} outline={false} small onClick={showAlert} ><IoClose></IoClose>warning</Button>&nbsp;&nbsp;&nbsp;
+
+      <div className="DivButton">
+
+      <Button select="secondary" rounded outline={false} large><IoAlarm></IoAlarm> secondary </Button>
+      </div>
+     
+    
+      
     </div>
+
   )
 }
 

@@ -1,61 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 .primary {
   background: #FBA312;
   border: solid #FBA312;
   color: #FBA312;
+  &:hover{
+    background-color: #fba212cb;
+    border: solid #fba212cb;
+    color: #000000;
+  
+  }
+
 }
 
 .secondary {
   background: #ffffff;
   border: solid #ffffff;
-  color: #ffffff;
+  color: #000000;
+  &:hover{
+    background-color: #ffffffd2;
+    border: solid #ffffffd2;
+    color: #000000;
+  
+  }
 }
 
 .warning {
-  background: #9A1212; 
+  background: #9a1212; 
   color: #9A1212; 
   border: solid #9A1212; 
+  &:hover{
+    background-color: #9a1212c8;
+    border: solid #9a1212c8;
+    color: #000000;
+  
+  }
 }
 
 .outline {
   background: rgba(0, 0, 0, 0);
+  &.secondary:hover{
+    background-color: #ffffff;
+    border: solid #ffffff;
+    color: #000000 !important;
+  }
+  &.primary:hover{
+    background: #FBA312;
+  border: solid #FBA312;
+  color: #000000 !important;
+  }
+  &.warning:hover{
+    background: #9a1212;
+  border: solid #9a1212;
+  color: #000000 !important;
+  }
+
 }
 
 .button {
-  padding: 10px 22px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
+  display: flex;
   cursor: pointer;
-  font-weight:500;
-  border-radius: 0.5px;
-  padding-top: 5px;
+  border-radius: 0.2rem;
   outline: none !important;
   box-shadow: none !important;
-}
-
-.button:active,.button:focus,.button:hover,button {
-  transform: scale(0.95); 
-  outline: none !important;
-  box-shadow: none !important;
-
-}
-
-.rounded {
-  border-radius: 10px;
-}
-.small{
-  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 1.0rem;
+  font-family: 'Rubik';
   font-weight: 500;
-  padding-left: 15px;
-  padding-right: 15px;
-  }
-.medium{
-  font-size: 17px;
-  height: max-content;
+
   
 }
-.large{
-  font-size: 20px;
-  width: 300px;
+ .button:hover{
+   transform: scale(0.99);
+          
+ }
+
+.rounded {
+  border-radius: 1rem;
 }
+.small {
+  font-size: 1.1375rem;
+  height: 2.5rem;
+  font-weight: 600;
+  padding: 0.7rem 2.5rem;
+}
+
+.large {
+  width: 100%;
+  box-sizing: border-box; 
+  font-size: 1.3rem;
+  height: 3rem;
+  font-weight: 500;
+  padding: 0.7rem 2.5rem;
+}
+@media screen and (max-width: 767px) { 
+  .button { 
+    display: flex; 
+    margin-bottom: 10px; 
+    flex-direction: column;
+    gap: 0.5em;
+  } 
+ .button.large{
+    width: 100%;
+  }
+  .button.small{
+    width: 50%;
+  }
+} 
