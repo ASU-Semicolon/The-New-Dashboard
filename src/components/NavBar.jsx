@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { IoClose, IoMenu } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import "./Navbar.css";
+import MenuIcon from '/menuIcon.svg';
 import SemicolonLogo from '../../public/Semicolon.png';
 
 const Navbar = () => {
@@ -10,6 +11,15 @@ const Navbar = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  const menuItems = [
+    { title: "Users", path: "/users" },
+    { title: "Committees", path: "/committees" },
+    { title: "Workshops", path: "/workshops" },
+    { title: "Participants", path: "/participants" },
+    { title: "Members", path: "/members" },
+    { title: "Interviewer", path: "/interviewer" },
+  ];
 
   return (
     <header className="header">
@@ -21,36 +31,13 @@ const Navbar = () => {
         </div>
         <div className="nav__menu" id="nav-menu">
           <ul className="nav__list">
-            <li className="nav__item">
-              <NavLink to="/users" className="nav__link">
-                Users
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/committees" className="nav__link">
-                Committees
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/workshops" className="nav__link">
-                Workshops
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/participants" className="nav__link">
-                Participants
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/members" className="nav__link">
-                Members
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/interviewer" className="nav__link">
-                Interviewer
-              </NavLink>
-            </li>
+            {menuItems.map((item, index) => (
+              <li key={index} className="nav__item">
+                <NavLink to={item.path} className="nav__link">
+                  {item.title}
+                </NavLink>
+              </li>
+            ))}
           </ul>
           <div className="nav__close" id="nav-close" onClick={toggleMenu}>
             <IoClose />
@@ -58,7 +45,7 @@ const Navbar = () => {
         </div>
 
         <div className="nav__toggle" id="nav-toggle" onClick={toggleMenu}>
-          <IoMenu />
+          <img src={MenuIcon} alt="Menu Icon" />
         </div>
       </nav>
     </header>
