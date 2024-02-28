@@ -29,7 +29,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <InfoSection title={"hi"} body={"A general component with title and body like this and needs to be identical to the design."}></InfoSection>
+      <InfoSection title={"Past Experiences"} body={"Dolore quis enim ad adipisicing elit ea aliquip fugiat sint sint nulla excepteur. Nostrud cupidatat ullamco ea do. Elit est cillum deserunt aliquip qui. Nulla officia nostrud in adipisicing nostrud exercitation ut sit. Aute eiusmod deserunt minim laboris sit pariatur tempor aute laboris irure."}></InfoSection>
     </div>
   )
 }

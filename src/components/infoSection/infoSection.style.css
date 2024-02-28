@@ -1,20 +1,22 @@
-p {
-
+.infoSectionTitle {
+    font-weight: normal; 
+    text-transform: capitalize;
 }
 
-h1 { 
-    font-weight: normal; 
+.infoSectionBody { 
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 .infoSection {
+    font-family: 'Rubik', Arial, sans-serif;
+    font-weight: 400;
     background-color: #080808;
     color: #ffffffff;
     text-align: left;
-    text-transform: capitalize;
-    border: 0.2rem solid rgba(64, 62, 62, 0.54);
-    border-radius: 0.9rem;
-    padding-left: 2rem;
-    padding-right: 4rem;
-    padding-top: 2rem; 
-    padding-bottom: 2rem;
+    border: 0.2rem solid hsl(0, 0%, 12%);
+    border-radius: 0.9rem; 
+    padding: 3.2rem 4.4rem 3.2rem 4.4rem;
 }
