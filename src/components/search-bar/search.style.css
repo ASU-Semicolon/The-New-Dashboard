@@ -1,43 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-
-.logo-search {
-    float: left;
-}
-
 .logo-search:active,
 .entered-text {
     animation: shake 0.4s linear 0s;
 }
 
+.logo-search:active,
 .logo-search:hover {
-    width: 18px;
-    height: 18px;
+    transform: scale(1.285);
 }
-
+.logo-search {
+    transition: all 0.3s;
+}
 .text-search {
     color: #a4a4a4;
     background-color: #080808;
     border: 0px;
     width: 100%;
-    font-family: "Rubik", "sans-serif";
-    font-size: 1rem;
+
+    font-size: 0.875rem;
     font-weight: 400;
     outline: none;
 }
 
 .search-bar-container {
     background-color: #080808;
-    width: 40vw;
-    border-radius: 3px;
-    padding: 1vh 1vw;
-    box-sizing: border-box;
+
+    max-width: 43.8125rem;
+    border-radius: 0.125rem;
+    padding: 0.58125rem 1rem;
+
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    justify-content: start;
-    border: 0.2px #a4a4a4 solid;
+    gap: 1rem;
+    justify-content: flex-start;
+    border: 0.5px #3f3f3f solid;
 }
-
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
 @keyframes shake {
     0% {
         margin-left: 0rem;
