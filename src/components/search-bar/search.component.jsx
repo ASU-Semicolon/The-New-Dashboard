@@ -7,10 +7,16 @@ import "./search.style.css";
  * @component
  * @param {Object} props - The component properties.
  * @param {Function} props.setSearchInput - The function to set the search input value.
+ * @param {String} props.placeholder - The placeholder of searchbar.
+ * @param {Number} props.borderRadius - The border radius of searchbar.
  *
  * @returns {JSX.Element} - The SearchBar component.
  */
-const SearchBar = ({ setSearchInput = () => {} }) => {
+const SearchBar = ({
+    placeholder = "Search",
+    borderRadius = 2,
+    setSearchInput = () => {},
+}) => {
     const [isEntered, setIsEntered] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const changeHandler = (value) => {
@@ -47,7 +53,10 @@ const SearchBar = ({ setSearchInput = () => {} }) => {
         }
     };
     return (
-        <div className="search-bar-container">
+        <div
+            style={{ borderRadius: `${borderRadius}px` }}
+            className="search-bar-container"
+        >
             <button
                 disabled={isEntered}
                 className="search-button"
@@ -66,7 +75,7 @@ const SearchBar = ({ setSearchInput = () => {} }) => {
                     isEntered ? "entered-text text-search" : "text-search"
                 }
                 value={searchValue}
-                placeholder="Search"
+                placeholder={placeholder}
                 onChange={(e) => changeHandler(e.target.value)}
                 onKeyDown={enterKeyHandler}
             />

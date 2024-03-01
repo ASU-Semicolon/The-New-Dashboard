@@ -20,6 +20,9 @@
     font-weight: 400;
     outline: none;
 }
+.text-search::placeholder {
+    color: inherit;
+}
 
 .search-bar-container {
     background-color: #080808;
