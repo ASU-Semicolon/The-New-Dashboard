@@ -30,7 +30,7 @@ const SearchBar = ({
             timer = setTimeout(() => {
                 setIsEntered(true);
                 setSearchInput(searchValue);
-                setSearchValue("");
+              
             }, 1500);
         }
         return () => {
