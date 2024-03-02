@@ -1,16 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./dropdown.style.css";
 import { MdOutlineExpandMore } from "react-icons/md";
-
-const Dropdown = ({ options, onSelect }) => {
+/**
+ * Dropdown component for selecting options.
+ *
+ * @component
+ * @param {Object} props - The component properties.
+ * @param {string[]} props.options - An array of options to be displayed in the dropdown.
+ * @param {Function} props.onSelect - A function to be called when an option is selected.
+ * @param {string} [props.deafultValue="Select an option"] - The default value to display when no option is selected.
+ *
+ * @returns {JSX.Element} - The Dropdown component.
+ */
+const Dropdown = ({
+    options = [],
+    onSelect,
+    deafultValue = "Select an option",
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
 
     const dropdownRef = useRef(null);
 
     const handleOptionClick = (option) => {
-        setSelectedOption(option.label || option.value);
-        // onSelect(option);
+        setSelectedOption(option);
+        onSelect(option);
         setIsOpen(false);
     };
 
@@ -34,9 +48,7 @@ const Dropdown = ({ options, onSelect }) => {
         <div className="dropdown" ref={dropdownRef}>
             <div className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
                 <div className="dropdown-toggle-text">
-                    {selectedOption ||
-                        (options.length > 0 && options[0].label) ||
-                        "Select an option"}
+                    {selectedOption || deafultValue}
                 </div>
                 <MdOutlineExpandMore
                     style={{
@@ -45,15 +57,17 @@ const Dropdown = ({ options, onSelect }) => {
                     }}
                 />
             </div>
-            {isOpen && (
+            {isOpen && options.length > 0 && (
                 <ul className="dropdown-menu">
                     {options.map((option) => (
                         <li
-                            key={option.value}
+                            key={option}
                             className="dropdown-item"
-                            onClick={() => handleOptionClick(option)}
+                            onClick={() =>
+                                handleOptionClick(option.toLowerCase())
+                            }
                         >
-                            {option.label || option.value}
+                            {option.toLowerCase()}
                         </li>
                     ))}
                 </ul>

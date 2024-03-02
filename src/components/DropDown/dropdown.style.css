@@ -1,16 +1,18 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    text-transform: capitalize;
 }
 
 .dropdown-toggle {
-    height: 36px;
-    width: 170px;
+    height: 2.25rem;
+
+    width: 100%;
     background-color: #080808;
     color: #a4a4a4;
     border: 0.5px solid #3f3f3f;
-    padding: 0 12px;
-    border-radius: 5px;
+    padding: 0 0.75rem;
+    border-radius: 0.3125rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -29,18 +31,19 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%; /* Change the width to 100% */
+    width: 100%;
     background-color: #080808;
     color: #a4a4a4;
     border: 0.5px solid #3f3f3f;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     padding: 0;
     margin: 0;
+    z-index: 9999;
     list-style: none;
 }
 
 .dropdown-item {
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
 }
 
