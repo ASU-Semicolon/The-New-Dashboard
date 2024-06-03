@@ -1,0 +1,32 @@
+.title__cont{
+  max-width: 60.875rem;
+ 
+
+}
+
+
+.add_user__cont{
+  max-width: 8.5rem;
+  height: 2.1875rem;
+}
+.add-icon{
+
+  margin-bottom: -3px;
+  width: 2.05rem;
+  margin-right: -6px;
+  height:2.05rem ;
+}
+
+.section__users .title__cont button{
+padding: 0.8125rem 1.5625rem  0.8125rem 0.8125rem;
+}
+.section__users{
+  margin: 0 2.4rem 2rem ;
+
+}
+.users__loading_text{
+  color:#fff;
+        text-align:center;
+        margin-top: 4rem;
+        font-size: 1.4rem;
+}

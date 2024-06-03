@@ -1,33 +1,69 @@
 .input {
     display: flex;
     flex-direction: column;
-    gap:.5rem;
+    gap:0.75rem;
 
   }
   .label {
     color:white;
     font-size: 1.1rem;
-    font-family: sans-serif;;
+    display: block;
+    width: 100%;
+    text-transform: capitalize;
+   
   }
   
-  .input::placeholder {
-    font-size: 0.9rem;
-    font-family: sans-serif;
+  textarea::placeholder,
+  input::placeholder
+   {
+    font-size: 0.875rem;
+    color:  #A4A4A4;
+    ;
+    text-transform: capitalize;
+  
   }
   
  .inputBar {
-    padding: 0.7rem;
+    padding: 1.03125rem;
     padding-left: 1rem;
-    border-radius: 0.5rem;
-    margin-top: 0.2rem;
+    border-radius: 0.3125rem;
+    font-weight: 400;
+    line-height: 16.59px;
     color: white; 
     background-color: #080808;
- 
-    border: 1px solid 
+    display: block;
+    width: 100%;
+    font-family: 'Rubik',sans-serif;
+    font-size: 0.875rem;
+    border: 0.5px solid 
     #3F3F3F; 
   }
   textarea.inputBar{
     resize: vertical;
   }
+  .inputBar:focus{
+    outline: none;
+  }
   
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus
+  
+  {
+    -webkit-box-shadow: 0 0 0 30px #080808 inset ;
+    -webkit-text-fill-color: #fff ; 
+   
+  }
 
+  
+  
+  textarea:-moz-autofill,
+  input:-moz-autofill {
+    box-shadow: 0 0 0 30px #080808 inset ; 
+    
+   
+   
+  }

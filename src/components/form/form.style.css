@@ -1,0 +1,18 @@
+.modal__form{
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.form__cont .primary__title{
+  font-weight: 400;
+  height: 4.75rem;
+  margin-bottom: 1.75rem;
+}
+.form__button_cont{
+  display: flex;
+  gap: 2.375rem;
+  height: 2.8125rem;
+}
+.form__button_cont button{
+  width: 45.7%;
+}

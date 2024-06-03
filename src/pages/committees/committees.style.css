@@ -1,0 +1,26 @@
+.title__cont{
+  max-width: 64.125rem;
+ 
+
+}
+
+
+.add_committee__cont{
+  max-width: 9.5rem;
+  height: 2.1875rem;
+}
+.section__committees .add-icon{
+
+  margin-bottom: -3px;
+  width: 2.05rem;
+  margin-right: -8px;
+  height:2.05rem ;
+}
+
+.section__committees .title__cont button{
+padding: 0.8125rem 0.625rem  0.8125rem 0.125rem ;
+}
+.section__committees{
+  margin: 0 2.4rem 2rem ;
+
+}

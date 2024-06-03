@@ -28,17 +28,38 @@
     color: #fff;
     line-height: 1.48rem;
     font-size: 1.25rem;
+    gap: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:100%;
+    white-space: nowrap;
 }
 
 .card-button-cont {
     display: flex;
+    gap: 1.25rem;
+   
     justify-content: space-between;
+    height: 1.6875rem;
 }
+.card-button-cont div{
+    width: 45.5%;
+    height: 100%;
+}
+
 .small.card .card-text-cont {
     margin-bottom: 2.25rem;
 }
 .big.card .card-text-cont {
     margin-bottom: 2.625rem;
+}
+.delete-icon,
+.edit-icon{
+    margin-bottom: -2px;
+    width: 1.1rem;
+   
+    height:1.1rem ;
+    align-self: center;
 }
 .card-list {
     list-style: none;
@@ -55,4 +76,5 @@
     font-size: 0.875rem;
     color: #b6b6b6;
     margin: 0;
+    text-transform: capitalize;
 }

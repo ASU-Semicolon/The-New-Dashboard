@@ -1,31 +1,43 @@
 import { useState } from "react";
-import Dropdown from "./components/dropdown/dropdown.component";
-import Card from "./components/card/card.component";
-import InputWithLabel from "./components/Input-with-label/Input-with-label.component";
-import Loader from "./components/loader/loader.component";
-import SearchBar from "./components/search-bar/search.component";
 
+import Root from './pages/Root.page'
+import   usersAction  from "./utils/actions/usersAction";
+import LoginPage from "./pages/login/login.page";
+import UsersPage from "./pages/users/users.page";
+import CommitteesPage from "./pages/committees/committees.page";
+import WorkshopsPage from "./pages/workshops/workshops.page";
+import { action as loginAction } from "./pages/login/login.page";
+import usersLoader  from "./utils/loaders/usersLoader";
+import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import authLoader from "./utils/loaders/authLoader";
+import homeLoader from "./utils/loaders/homeLoader";
+const router =createBrowserRouter([{
+   path:'/',element:<Root/>,loader:authLoader,id:'root',children:[
+    {
+        path:'users',
+    id:'users',
+    loader:usersLoader,
+        element:<UsersPage/>
+        ,action:usersAction
+    },{
+        index:true,
+        loader:homeLoader
+    },
+    {path:'committees',
+        element:<CommitteesPage/>
+    },
+    ,{path:'workshops',
+        element:<WorkshopsPage/>
+    },
+   ]
+
+},{
+    path:'/login',element:<LoginPage/>,action:loginAction
+}])
 function App() {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "4rem",
-                backgroundColor: "#000",
-                width: "100vw",
-                minHeight: "100vh",
-                padding: "2rem",
-            }}
-        >
-            <Dropdown
-                options={[{ value: "1" }, { value: "2" }, { value: "3" }]}
-            />
-            <Card title="test" data={{ key1: "value1", key2: "value2" }} />
-            <InputWithLabel label="Name" placeholder="Enter your name" />
-            <SearchBar />
-            <Loader isLoading={true} />
-        </div>
+        <RouterProvider router={router}/>
+      
     );
 }
 
