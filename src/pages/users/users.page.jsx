@@ -15,17 +15,19 @@ import { addUserFormData } from "../../utils/formsData";
 import createAvaialbleYears from "../../utils/createAvaiableYears";
 function Users() {
   
-  const {users}=useLoaderData()
+  const {users,committees}=useLoaderData()
+  
   const availableYears=createAvaialbleYears(2023)
   const defaultYear=availableYears[availableYears.length-1]
   const [showModal,setShowModal]=useState(false)
   const [searchInput,setSearchInput]=useState('')
   const [selectedYear,setSelectedYear]=useState(defaultYear)
   const [usersData,setUsersData]=useState([])
+  const [committeesData,setCommitteesData]=useState(undefined)
  const filteredUsers=usersData.filter((user)=>
 {
-  if(new Date(user.createdAt).getFullYear().toString()===selectedYear){
-    return user.username.toLowerCase().includes(searchInput.toLowerCase())|| user.phone.includes(searchInput)
+  if(user.Season===selectedYear){
+    return user.Username.toLowerCase().includes(searchInput.toLowerCase())|| user.Phone.includes(searchInput)
   }else{
     return false;
   }
@@ -35,21 +37,32 @@ function Users() {
   useEffect(() => {
     if (users) {
       users.then(data => {setUsersData(data)
-             console.log(data)
+           
 
       }).catch(error => {
         console.error("Failed to load data:", error);
       });
     }
   }, [users]);
+  useEffect(() => {
+    if (committees) {
+      committees.then(data => {setCommitteesData(data)
+           
+
+      }).catch(error => {
+        console.error("Failed to load data:", error);
+      });
+    }
+  }, [committees]);
+
   return <>
     <Modal setShowModal={setShowModal} showModal={showModal}><ModalForm buttonText="Add User" showModal={showModal}   cancelButtonHandler={()=>{
       setShowModal(false)
-    }} title="Add User" fieldsArr={addUserFormData}/></Modal>
+    }} title="Add User" fieldsArr={addUserFormData(committeesData)}/></Modal>
       <main className="section__users">
     <div className="title__cont"><h1 className="primary__title">Users</h1>
     <div className="add_user__cont">
-      <Button  onClick={()=>{setShowModal(true)}} select="primary" rounded={false} small={true} outline={false} large={false}><span><IoIosAdd className="add-icon"/></span><span className="add_button__text">
+      <Button  onClick={()=>{setShowModal(true)}} disabled={!committeesData} select="primary" rounded={false} small={true} outline={false} large={false}><span><IoIosAdd className="add-icon"/></span><span className="add_button__text">
         Add User
         </span>
         </Button>
@@ -64,14 +77,14 @@ function Users() {
        <Dropdown deafultValue={defaultYear} onSelect={setSelectedYear} options={availableYears}/>
       </div>
        </div>
-       <Suspense fallback={<p className="users__loading_text" style={{
+       <Suspense fallback={<p className="loading_text" style={{
        }}>Loading Users...</p>}>
         <Await resolve={users}>
           {(users) => {
           
            
-           return <CardGrid cardSize="big" cardFormTitle='Edit User'
-cardFormButtonText='Edit User'  gridSize="small" fallbackText="No Users Found." cards={usersToCards(filteredUsers)}/>
+           return <CardGrid disableButtons={!committeesData} cardSize="big" cardFormTitle='Edit User'
+cardFormButtonText='Edit User'  gridSize="small" fallbackText="No Users Found." cards={usersToCards(filteredUsers,committeesData)}/>
           }}
         </Await>
       </Suspense>

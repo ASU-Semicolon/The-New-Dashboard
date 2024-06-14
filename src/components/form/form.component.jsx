@@ -2,7 +2,7 @@ import { Form, useNavigation } from "react-router-dom";
 import Button from "../button/button.component";
 import InputWithLabel from "../Input-with-label/Input-with-label.component";
 import './form.style.css'
-import { useEffect, useRef, useState} from "react";
+import { useEffect,useReducer, useRef, useState} from "react";
 import Dropdown from "../dropdown/dropdown.component";
 
 /**
@@ -27,13 +27,24 @@ import Dropdown from "../dropdown/dropdown.component";
  * @property {Array<string>} [options] - The options for dropdown inputType.
  * @property {boolean} [multiline] - Whether the input is multiline (textarea).
  */
+const reducer=(state,action)=>{
+  if(action.type==='Update'){
+    const editedValues=[...state]
+    
+    editedValues[action.payload.index]=action.payload.value
+    return editedValues
+  }
+
+}
+
 function ModalForm({method='post',fieldsArr=[],title='',buttonText='Add' ,showModal=false, id='' ,cancelButtonHandler=()=>{}}) {
+  const[selectedValues,dispatch]=useReducer(reducer,[])
   const formRef=useRef()
  const navigation= useNavigation()
  const isSubmitting=navigation.state==='submitting'
- const [selectedValue,setSelectedValue]=useState('')
- let selectedName;
- let selectedDef;
+ 
+ const selectedNames=[];
+ const selectedDefs=[];
  useEffect(() => {
   
   if (!isSubmitting) {
@@ -56,23 +67,24 @@ useEffect(()=>{
 
 {fieldsArr.map((field)=>{
   if(field.inputType&&field.inputType==='dropdown'){
-    if(field.deafultValue){
-      setSelectedValue(field.deafultValue)
-    }
-    selectedName=field.label
-    selectedDef=field.defaultValue
-
+   
+    const selectedIndex=selectedNames.length
+    selectedNames.push(field.label)
+    
+    selectedDefs.push(typeof field.options[0]==='object'?'':field.defaultValue)
     return( <div key={field.label} className="input">
       <label className="label"> {field.label}</label>
-<Dropdown   onSelect={setSelectedValue} options={field.options} deafultValue={field.defaultValue|| `select a ${field.label}`}/>
+<Dropdown   onSelect={(selectedValue)=>{
+  dispatch({type:'Update',payload:{index:selectedIndex,value:selectedValue}})
+}}  options={field.options} deafultValue={field.defaultValue|| `select a ${field.label}`}/>
     </div>
     )
   }else{
-    return <InputWithLabel key={field.label}  label={field.label} multiline={field.multiline?field.multiline:false} defaultValue={field.defaultValue?field.defaultValue:null} placeholder={field.placeholder?field.placeholder:`Enter ${field.label}`} inputType={field.inputType?field.inputType:'text'} />
+    return <InputWithLabel key={field.label} htmlFor={id?`${field.label} ${id}`:field.label}   label={field.label} multiline={field.multiline?field.multiline:false} defaultValue={field.defaultValue?field.defaultValue:null} placeholder={field.placeholder?field.placeholder:`Enter ${field.label}`} inputType={field.inputType?field.inputType:'text'} />
   }
 })}
 {id&&<input type="hidden" name="id" value={id}/>}
-{selectedName&&<input type="hidden" name={selectedName} value={selectedValue||selectedDef}/>}
+{selectedNames.length>0&&selectedNames.map((name,index)=><input type="hidden" key={name} name={name} value={selectedValues[index]||''}/>)}
 <div className="form__button_cont">
 
 <Button type="submit" disabled={isSubmitting}   rounded={false} outline={false} small={true} large={false}>{isSubmitting?'Submitting...':buttonText}</Button>

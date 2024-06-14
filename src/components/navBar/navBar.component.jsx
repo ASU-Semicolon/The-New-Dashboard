@@ -54,7 +54,8 @@ const Navbar = ({isAuthenticated=true,isAdmin=true}) => {
 if(!isAdmin){
   menuItems.shift()
 }
-  return (<><div ref={seintelRef} className="observer"></div>
+  return (<>
+    <div ref={seintelRef} className="observer"></div>
   <div className={`${isSticky?'sticky':''}__adjust`}></div>
     <header className="header">
       <nav  className={`nav container ${isSticky?'sticky':''} ${showMenu ? 'show-menu' : ''}`}>

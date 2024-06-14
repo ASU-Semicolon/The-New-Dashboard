@@ -1,11 +1,13 @@
 import { defer, redirect } from "react-router-dom"
 import { getToken, isUserAdmin } from "../authData"
 import { loadCommittees } from "./committeesLoader"
-export async function loadUsers(){
+import { loadUsers } from "./usersLoader"
+ async function  loadWorkshops(){
   const token=getToken()
- 
-  
-  const response=await fetch('http://localhost:8000/api/users',{
+
+
+
+  const response=await fetch('http://localhost:8000/api/workshops',{
     headers:{
       Authorization:'Bearer '+token
     
@@ -13,11 +15,11 @@ export async function loadUsers(){
     }
   })
   
+
  const {data}= await response.json()
- 
+ console.log(data)
  return data
 }
-
 export default async function loader(){
   const token=getToken()
  
@@ -25,13 +27,10 @@ export default async function loader(){
     return redirect('/login')
   }
   
-  const isAdmin=isUserAdmin()
-  
-  if(!isAdmin){
-    return redirect("/committees")
-  }
   return defer({
     users:loadUsers()
-,committees: loadCommittees()
+,committees: loadCommittees(),
+workshops:loadWorkshops()
+
   })
 }

@@ -6,14 +6,19 @@ import { MdOutlineExpandMore } from "react-icons/md";
  *
  * @component
  * @param {Object} props - The component properties.
- * @param {string[]} props.options - An array of options to be displayed in the dropdown.
+ * @param {Array[string|option]} props.options - An array of options to be displayed in the dropdown.
  * @param {Function} props.onSelect - A function to be called when an option is selected.
  * @param {string} [props.deafultValue="Select an option"] - The default value to display when no option is selected.
  *
  * @returns {JSX.Element} - The Dropdown component.
+ * 
+ *  @typedef {Object} option
+ * @property {string} name - The name of the option.
+ * @property {string} value 
  */
 const Dropdown = ({
     options = [],
+    
     onSelect=()=>{},
     deafultValue = "Select an option",
 }) => {
@@ -23,8 +28,15 @@ const Dropdown = ({
     const dropdownRef = useRef(null);
 
     const handleOptionClick = (option) => {
-        setSelectedOption(option);
+        if(typeof option==='object'){
+
+            setSelectedOption(option.name.toLowerCase());
+        onSelect(option.value.toLowerCase());
+        }else{
+
+            setSelectedOption(option);
         onSelect(option);
+        }
         setIsOpen(false);
     };
 
@@ -61,13 +73,13 @@ const Dropdown = ({
                 <ul className="dropdown-menu">
                     {options.map((option) => (
                         <li
-                            key={option}
+                            key={typeof option==='object'?option.value:option}
                             className="dropdown-item"
                             onClick={() =>
-                                handleOptionClick(option.toLowerCase())
+                                handleOptionClick(typeof option==='object'?option:option.toLowerCase())
                             }
                         >
-                            {option.toLowerCase()}
+                            {typeof option==='object'?option.name.toLowerCase():option.toLowerCase()}
                         </li>
                     ))}
                 </ul>

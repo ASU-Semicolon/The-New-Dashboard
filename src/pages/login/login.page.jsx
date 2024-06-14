@@ -34,21 +34,22 @@ export async function action({request}){
     password:data.get('password')
 
   }
-  const response=await fetch('http://localhost:8000/users/login',{
+  const response=await fetch('http://localhost:8000/api/users/signIn',{
     method:request.method,
     body:JSON.stringify(user),
     headers:{
       'Content-Type':'application/json'
     }
   })
-  if (response.status!==200){
+  console.log(response)
+  if (response.status!==201){
     
     return response
   }
   const responseData=await response.json()
   
-  localStorage.setItem('token',responseData.data.token)
-  localStorage.setItem('role',responseData.data.role)
+  localStorage.setItem('token',responseData.data.Token)
+  localStorage.setItem('role',responseData.data.User.Role)
 
   return redirect('/committees')
 

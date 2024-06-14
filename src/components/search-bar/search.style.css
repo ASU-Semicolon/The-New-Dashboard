@@ -22,6 +22,7 @@
 }
 .text-search::placeholder {
     color: inherit;
+    text-transform: none;
 }
 
 .search-bar-container {
