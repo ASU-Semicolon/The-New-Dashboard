@@ -11,15 +11,15 @@ import { MdOutlineExpandMore } from "react-icons/md";
  * @param {string} [props.deafultValue="Select an option"] - The default value to display when no option is selected.
  *
  * @returns {JSX.Element} - The Dropdown component.
- * 
+ *
  *  @typedef {Object} option
  * @property {string} name - The name of the option.
- * @property {string} value 
+ * @property {string} value
  */
 const Dropdown = ({
     options = [],
-    paddingSize='small',
-    onSelect=()=>{},
+    paddingSize = "small",
+    onSelect = () => {},
     deafultValue = "Select an option",
 }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,14 +28,12 @@ const Dropdown = ({
     const dropdownRef = useRef(null);
 
     const handleOptionClick = (option) => {
-        if(typeof option==='object'){
-
+        if (typeof option === "object") {
             setSelectedOption(option.name.toLowerCase());
-        onSelect(option.value.toLowerCase());
-        }else{
-
+            onSelect(option.value.toLowerCase());
+        } else {
             setSelectedOption(option);
-        onSelect(option);
+            onSelect(option);
         }
         setIsOpen(false);
     };
@@ -58,7 +56,10 @@ const Dropdown = ({
 
     return (
         <div className="dropdown" ref={dropdownRef}>
-            <div className={`${paddingSize.toLowerCase()} dropdown-toggle`} onClick={() => setIsOpen(!isOpen)}>
+            <div
+                className={`${paddingSize.toLowerCase()} dropdown-toggle`}
+                onClick={() => setIsOpen(!isOpen)}
+            >
                 <div className="dropdown-toggle-text">
                     {selectedOption || deafultValue}
                 </div>
@@ -73,13 +74,23 @@ const Dropdown = ({
                 <ul className="dropdown-menu">
                     {options.map((option) => (
                         <li
-                            key={typeof option==='object'?option.value:option}
+                            key={
+                                typeof option === "object"
+                                    ? option.value
+                                    : option
+                            }
                             className={`${paddingSize.toLowerCase()} dropdown-item`}
                             onClick={() =>
-                                handleOptionClick(typeof option==='object'?option:option.toLowerCase())
+                                handleOptionClick(
+                                    typeof option === "object"
+                                        ? option
+                                        : option.toLowerCase(),
+                                )
                             }
                         >
-                            {typeof option==='object'?option.name.toLowerCase():option.toLowerCase()}
+                            {typeof option === "object"
+                                ? option.name.toLowerCase()
+                                : option.toLowerCase()}
                         </li>
                     ))}
                 </ul>

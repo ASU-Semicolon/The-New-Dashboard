@@ -1,6 +1,6 @@
-import React from 'react';
-import './Button.style.css';
-import classNames from 'classnames'; 
+import React from "react";
+import "./Button.style.css";
+import classNames from "classnames";
 
 /**
  * A customizable button component.
@@ -20,33 +20,51 @@ import classNames from 'classnames';
  * @returns {JSX.Element} - The Button component.
  */
 
-function Button({type='button', children , select = 'secondary',disabled=false , rounded =true , outline = true , small = true , large = false, tinyRadius=false , onClick = () => {}}) {
-    const classes = classNames( { 
-      'button': true,
-      'primary': select === 'primary' ,
-      'secondary': select === 'secondary',
-      'warning': select === 'warning',
-      'rounded': rounded,
-      'outline': outline,
-      'small': small,
-      'large': large
-    })
+function Button({
+    type = "button",
+    children,
+    select = "secondary",
+    disabled = false,
+    rounded = true,
+    outline = true,
+    small = true,
+    large = false,
+    tinyRadius = false,
+    onClick = () => {},
+}) {
+    const classes = classNames({
+        button: true,
+        primary: select === "primary",
+        secondary: select === "secondary",
+        warning: select === "warning",
+        rounded: rounded,
+        outline: outline,
+        small: small,
+        large: large,
+    });
 
     const textColor = outline
-    ? (select === 'primary' ? '#FBA312' :
-        select === 'secondary' ? '#ffffff' :
-        select === 'warning' ? '#9A1212' :
-        '#ffffff')
-    : '#000000'; 
- 
+        ? select === "primary"
+            ? "#FBA312"
+            : select === "secondary"
+              ? "#ffffff"
+              : select === "warning"
+                ? "#9A1212"
+                : "#ffffff"
+        : "#000000";
 
     return (
-      <>       
-        <button className={classes} type={type} style={{color:textColor,borderRadius:tinyRadius&&'2px'}} disabled={disabled} onClick={onClick}>
-          {children}
-        </button>
-      </>
-
+        <>
+            <button
+                className={classes}
+                type={type}
+                style={{ color: textColor, borderRadius: tinyRadius && "2px" }}
+                disabled={disabled}
+                onClick={onClick}
+            >
+                {children}
+            </button>
+        </>
     );
 }
 

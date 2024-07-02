@@ -1,8 +1,8 @@
 import { Form, useActionData, useNavigation } from "react-router-dom";
 import Button from "../button/button.component";
 import InputWithLabel from "../Input-with-label/Input-with-label.component";
-import './form.style.css'
-import { useEffect,useReducer, useRef, useState} from "react";
+import "./form.style.css";
+import { useEffect, useReducer, useRef, useState } from "react";
 import Dropdown from "../dropdown/dropdown.component";
 
 /**
@@ -27,106 +27,180 @@ import Dropdown from "../dropdown/dropdown.component";
  * @property {Array<string>} [options] - The options for dropdown inputType.
  * @property {boolean} [multiline] - Whether the input is multiline (textarea).
  */
-const reducer=(state,action)=>{
-  if(action.type==='Update'){
-    const editedValues=[...state]
-    
-    editedValues[action.payload.index]=action.payload.value
-    return editedValues
-  }
+const reducer = (state, action) => {
+    if (action.type === "Update") {
+        const editedValues = [...state];
 
-}
-
-function ModalForm({method='post',fieldsArr=[],title='',buttonText='Add' ,showModal=false, id='' ,cancelButtonHandler=()=>{}}) {
-  const[selectedValues,dispatch]=useReducer(reducer,[])
-  const formRef=useRef()
- const navigation= useNavigation()
- const actionData=useActionData()
-const [errors,setErrors]=useState()
-
-useEffect(()=>{
-  if(actionData&&actionData.status===400&showModal){
- 
-
-    const dataErrors = {};
-    
-    actionData.errors.forEach((str) => {
-    const firstWord = str.split(' ')[0];
-    
-    if (!(firstWord in dataErrors)) {
-      dataErrors[firstWord] = str;
+        editedValues[action.payload.index] = action.payload.value;
+        return editedValues;
     }
-  });
- 
-  setErrors(dataErrors)
-}
-},[actionData])
+};
 
+function ModalForm({
+    method = "post",
+    fieldsArr = [],
+    title = "",
+    buttonText = "Add",
+    showModal = false,
+    id = "",
+    cancelButtonHandler = () => {},
+}) {
+    const [selectedValues, dispatch] = useReducer(reducer, []);
+    const formRef = useRef();
+    const navigation = useNavigation();
+    const actionData = useActionData();
+    const [errors, setErrors] = useState();
 
- const isSubmitting=navigation.state==='submitting'
- 
- const selectedNames=[];
- const selectedDefs=[];
- useEffect(() => {
-   if (!isSubmitting&&(!actionData||!actionData.status===400)&&showModal) {
-    
-    if(formRef.current){
-      
-      formRef.current.reset()
-    }
-    cancelButtonHandler()
-  }
-}, [isSubmitting]);
-useEffect(()=>{
-  if(!showModal&&!id&&formRef.current){
-    formRef.current.reset()
+    useEffect(() => {
+        if (actionData && (actionData.status === 400) & showModal) {
+            const dataErrors = {};
 
-  }
-  if(!showModal){
-     setErrors(undefined)
-   
-  }
-},[showModal])
- 
-  return ( <div className="form__cont">
-  <h2 className="primary__title">{title}</h2>
-  <Form ref={formRef} className="modal__form" method={method}>
+            actionData.errors.forEach((str) => {
+                const firstWord = str.split(" ")[0];
 
-{fieldsArr.map((field)=>{
-  if(field.inputType&&field.inputType==='dropdown'){
-   
-    const selectedIndex=selectedNames.length
-    selectedNames.push(field.label)
-    
-    selectedDefs.push(typeof field.options[0]==='object'?'':field.defaultValue)
-    return( <div key={field.label} className="input">
-      <label className="label"> {field.label}</label>
-      <small className={`${errors&&errors[field.label]?'visible':''}`}>{`please select a ${field.label}`}</small>
-<Dropdown   onSelect={(selectedValue)=>{
-  dispatch({type:'Update',payload:{index:selectedIndex,value:selectedValue}})
-}}  options={field.options} deafultValue={field.defaultValue|| `select a ${field.label}`}/>
-    </div>
-    )
-  }else{
-    return <InputWithLabel errorMessage={errors&&errors[field.label]||''}  key={field.label} htmlFor={id?`${field.label} ${id}`:field.label}   label={field.label} multiline={field.multiline?field.multiline:false} defaultValue={field.defaultValue?field.defaultValue:null} placeholder={field.placeholder?field.placeholder:`Enter ${field.label}`} inputType={field.inputType?field.inputType:'text'} />
-  }
-})}
-{id&&<input type="hidden" name="id" value={id}/>}
-{selectedNames.length>0&&selectedNames.map((name,index)=><input type="hidden" key={name} name={name} value={selectedValues[index]||''}/>)}
-<div className="form__button_cont">
+                if (!(firstWord in dataErrors)) {
+                    dataErrors[firstWord] = str;
+                }
+            });
 
-<Button type="submit" disabled={isSubmitting}   rounded={false} outline={false} small={true} large={false}>{isSubmitting?'Submitting...':buttonText}</Button>
-<Button rounded={false}  outline={true} small={true} large={false} onClick={()=>{
-  if(formRef.current&&!id){
-    formRef.current.reset()
-  }
- 
-  cancelButtonHandler()}}>Cancel</Button>
-</div>
+            setErrors(dataErrors);
+        }
+    }, [actionData]);
 
-  </Form>
-</div>
-   );
+    const isSubmitting = navigation.state === "submitting";
+
+    const selectedNames = [];
+    const selectedDefs = [];
+    useEffect(() => {
+        if (
+            !isSubmitting &&
+            (!actionData || !actionData.status === 400) &&
+            showModal
+        ) {
+            if (formRef.current) {
+                formRef.current.reset();
+            }
+            cancelButtonHandler();
+        }
+    }, [isSubmitting]);
+    useEffect(() => {
+        if (!showModal && !id && formRef.current) {
+            formRef.current.reset();
+        }
+        if (!showModal) {
+            setErrors(undefined);
+        }
+    }, [showModal]);
+
+    return (
+        <div className="form__cont">
+            <h2 className="primary__title">{title}</h2>
+            <Form ref={formRef} className="modal__form" method={method}>
+                {fieldsArr.map((field) => {
+                    if (field.inputType && field.inputType === "dropdown") {
+                        const selectedIndex = selectedNames.length;
+                        selectedNames.push(field.label);
+
+                        selectedDefs.push(
+                            typeof field.options[0] === "object"
+                                ? ""
+                                : field.defaultValue,
+                        );
+                        return (
+                            <div key={field.label} className="input">
+                                <label className="label"> {field.label}</label>
+                                <small
+                                    className={`${errors && errors[field.label] ? "visible" : ""}`}
+                                >{`please select a ${field.label}`}</small>
+                                <Dropdown
+                                    onSelect={(selectedValue) => {
+                                        dispatch({
+                                            type: "Update",
+                                            payload: {
+                                                index: selectedIndex,
+                                                value: selectedValue,
+                                            },
+                                        });
+                                    }}
+                                    options={field.options}
+                                    deafultValue={
+                                        field.defaultValue ||
+                                        `select a ${field.label}`
+                                    }
+                                />
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <InputWithLabel
+                                errorMessage={
+                                    (errors && errors[field.label]) || ""
+                                }
+                                key={field.label}
+                                htmlFor={
+                                    id ? `${field.label} ${id}` : field.label
+                                }
+                                label={field.label}
+                                multiline={
+                                    field.multiline ? field.multiline : false
+                                }
+                                defaultValue={
+                                    field.defaultValue
+                                        ? field.defaultValue
+                                        : null
+                                }
+                                placeholder={
+                                    field.placeholder
+                                        ? field.placeholder
+                                        : `Enter ${field.label}`
+                                }
+                                inputType={
+                                    field.inputType ? field.inputType : "text"
+                                }
+                            />
+                        );
+                    }
+                })}
+                {id && <input type="hidden" name="id" value={id} />}
+                {selectedNames.length > 0 &&
+                    selectedNames.map((name, index) => (
+                        <input
+                            type="hidden"
+                            key={name}
+                            name={name}
+                            value={selectedValues[index] || ""}
+                        />
+                    ))}
+                <div className="form__button_cont">
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        rounded={false}
+                        outline={false}
+                        small={true}
+                        large={false}
+                    >
+                        {isSubmitting ? "Submitting..." : buttonText}
+                    </Button>
+                    <Button
+                        rounded={false}
+                        outline={true}
+                        small={true}
+                        large={false}
+                        onClick={() => {
+                            if (formRef.current && !id) {
+                                formRef.current.reset();
+                            }
+
+                            cancelButtonHandler();
+                        }}
+                    >
+                        Cancel
+                    </Button>
+                </div>
+            </Form>
+        </div>
+    );
 }
 
 export default ModalForm;

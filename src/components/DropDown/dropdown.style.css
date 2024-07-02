@@ -7,7 +7,7 @@
 
 .dropdown-toggle {
     height: 36px;
-font-size: 14px;
+    font-size: 14px;
     width: 100%;
     background-color: #080808;
     color: #a4a4a4;
@@ -18,10 +18,10 @@ font-size: 14px;
     align-items: center;
     justify-content: space-between;
 }
-.small.dropdown-toggle{
+.small.dropdown-toggle {
     padding: 0 12px;
 }
-.big.dropdown-toggle{
+.big.dropdown-toggle {
     padding: 0 16px;
 }
 .dropdown-toggle-text {
@@ -48,14 +48,14 @@ font-size: 14px;
     list-style: none;
 }
 .dropdown-item {
-height: 36px;
+    height: 36px;
     cursor: pointer;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
-  
+
     white-space: nowrap;
-  
+
     width: 100%;
 }
 .small.dropdown-item {

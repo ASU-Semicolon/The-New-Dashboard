@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Dropdown from "../dropdown/dropdown.component";
 import SearchBar from "../search-bar/search.component";
-import { NavLink,useLocation,useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./usersList.style.css";
 
 /**
@@ -40,94 +40,110 @@ function UsersList({
     firstFilterOptions = [],
     secoundFilterName = "status",
     secoundFilterOptions = [],
-    thirdFilterName='event',
-    thirdFilterOptions=[],
-    thirdFilterDefaultValue='',
-    backendFiltering=[false,false,false],
+    thirdFilterName = "event",
+    thirdFilterOptions = [],
+    thirdFilterDefaultValue = "",
+    backendFiltering = [false, false, false],
     searchbarPlaceholder = "Name or ID",
     searchbarFilters = ["name", "id"],
     fallbackText = "no users found !",
-    filteredUsers=[],
-    setFilteredUsers=()=>{}
-    
+    filteredUsers = [],
+    setFilteredUsers = () => {},
 }) {
     const location = useLocation();
-  const navigate = useNavigate();
- 
+    const navigate = useNavigate();
+
     const searchParams = new URLSearchParams(location.search);
     const [searchInput, setSearchInput] = useState("");
     const [firstFilterValue, setFirstFilterValue] = useState("");
     const [secoundFilterValue, setsecoundtFilterValue] = useState("");
     const [thirdFilterValue, setThirdFilterValue] = useState("");
 
-
-
-    useEffect(()=>{
-if(backendFiltering[0]&&firstFilterValue){
-    searchParams.set(firstFilterName.toLowerCase(),firstFilterValue);
-        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
-}
-    },[firstFilterValue])
-
-    useEffect(()=>{
-if(backendFiltering[1]&&secoundFilterValue){
-    searchParams.set(secoundFilterName.toLowerCase(),secoundFilterValue);
-        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
-
-} 
-    },[secoundFilterValue])
-
-    useEffect(()=>{
-if(backendFiltering[2]&&thirdFilterValue){
-    searchParams.set(thirdFilterName.toLowerCase(),thirdFilterValue);
-        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
-}
-    },[thirdFilterValue])
-   
-   
-    useEffect(()=>{
-        if(users){
-            
-             setFilteredUsers(users.filter((user) => {
-        let searchMatch = false;
-        searchbarFilters.forEach((searchFilter) => {
-            const propertyValue = user[searchFilter.toLowerCase()].toString();
-            if (
-                propertyValue &&
-                propertyValue.toLowerCase().includes(searchInput.toLowerCase())
-            ) {
-                searchMatch = true;
-            }
-        });
-        if (!searchMatch) {
-            return searchMatch;
+    useEffect(() => {
+        if (backendFiltering[0] && firstFilterValue) {
+            searchParams.set(firstFilterName.toLowerCase(), firstFilterValue);
+            navigate(`${location.pathname}?${searchParams.toString()}`, {
+                replace: true,
+            });
         }
-        if (
-            !backendFiltering[0]&&firstFilterValue.length > 0 &&
-            user[firstFilterName.toLowerCase()].toLowerCase() !==
-                firstFilterValue.toLowerCase()
-        ) {
-            return false;
+    }, [firstFilterValue]);
+
+    useEffect(() => {
+        if (backendFiltering[1] && secoundFilterValue) {
+            searchParams.set(
+                secoundFilterName.toLowerCase(),
+                secoundFilterValue,
+            );
+            navigate(`${location.pathname}?${searchParams.toString()}`, {
+                replace: true,
+            });
         }
-        if (
-            !backendFiltering[1]&&secoundFilterValue.length > 0 &&
-            user[secoundFilterName.toLowerCase()].toLowerCase() !==
-                secoundFilterValue.toLowerCase()
-        ) {
-            return false;
+    }, [secoundFilterValue]);
+
+    useEffect(() => {
+        if (backendFiltering[2] && thirdFilterValue) {
+            searchParams.set(thirdFilterName.toLowerCase(), thirdFilterValue);
+            navigate(`${location.pathname}?${searchParams.toString()}`, {
+                replace: true,
+            });
         }
-        if (
-            !backendFiltering[2]&&thirdFilterValue.length > 0 &&
-            user[thirdFilterName.toLowerCase()].toLowerCase() !==
-                thirdFilterValue.toLowerCase()
-        ) {
-            return false;
+    }, [thirdFilterValue]);
+
+    useEffect(() => {
+        if (users) {
+            setFilteredUsers(
+                users.filter((user) => {
+                    let searchMatch = false;
+                    searchbarFilters.forEach((searchFilter) => {
+                        const propertyValue =
+                            user[searchFilter.toLowerCase()].toString();
+                        if (
+                            propertyValue &&
+                            propertyValue
+                                .toLowerCase()
+                                .includes(searchInput.toLowerCase())
+                        ) {
+                            searchMatch = true;
+                        }
+                    });
+                    if (!searchMatch) {
+                        return searchMatch;
+                    }
+                    if (
+                        !backendFiltering[0] &&
+                        firstFilterValue.length > 0 &&
+                        user[firstFilterName.toLowerCase()].toLowerCase() !==
+                            firstFilterValue.toLowerCase()
+                    ) {
+                        return false;
+                    }
+                    if (
+                        !backendFiltering[1] &&
+                        secoundFilterValue.length > 0 &&
+                        user[secoundFilterName.toLowerCase()].toLowerCase() !==
+                            secoundFilterValue.toLowerCase()
+                    ) {
+                        return false;
+                    }
+                    if (
+                        !backendFiltering[2] &&
+                        thirdFilterValue.length > 0 &&
+                        user[thirdFilterName.toLowerCase()].toLowerCase() !==
+                            thirdFilterValue.toLowerCase()
+                    ) {
+                        return false;
+                    }
+                    return true;
+                }),
+            );
         }
-        return true;
-    })
-)
-}
-},[users,firstFilterValue,secoundFilterValue,thirdFilterValue,searchInput])
+    }, [
+        users,
+        firstFilterValue,
+        secoundFilterValue,
+        thirdFilterValue,
+        searchInput,
+    ]);
     return (
         <div className="users-cont">
             <div className="search-filter-cont">
@@ -136,14 +152,16 @@ if(backendFiltering[2]&&thirdFilterValue){
                     placeholder={searchbarPlaceholder}
                     setSearchInput={setSearchInput}
                 />
-                <Dropdown paddingSize='big'
+                <Dropdown
+                    paddingSize="big"
                     deafultValue={
                         firstFilterName.length > 0 ? firstFilterName : undefined
                     }
                     onSelect={setFirstFilterValue}
                     options={firstFilterOptions}
                 />
-                <Dropdown paddingSize='big'
+                <Dropdown
+                    paddingSize="big"
                     deafultValue={
                         secoundFilterName.length > 0
                             ? secoundFilterName
@@ -153,9 +171,7 @@ if(backendFiltering[2]&&thirdFilterValue){
                     options={secoundFilterOptions}
                 />
                 <Dropdown
-                    deafultValue={
-                        thirdFilterDefaultValue||thirdFilterName
-                    }
+                    deafultValue={thirdFilterDefaultValue || thirdFilterName}
                     onSelect={setThirdFilterValue}
                     options={thirdFilterOptions}
                 />

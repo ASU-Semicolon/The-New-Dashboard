@@ -1,82 +1,67 @@
 .input {
     display: flex;
     flex-direction: column;
-    gap:0.375rem;
-
-  }
-  .label {
-    color:white;
+    gap: 0.375rem;
+}
+.label {
+    color: white;
     font-size: 1.1rem;
     display: block;
     width: 100%;
     text-transform: capitalize;
-   
-  }
-  .input small{
+}
+.input small {
     visibility: hidden;
     font-size: 0.8rem;
     color: #9a1212;
-    
-    font-weight: 400;
 
-  }
-  .input small.visible{
+    font-weight: 400;
+}
+.input small.visible {
     visibility: visible;
-  }
-  textarea::placeholder,
-  input::placeholder
-   {
+}
+textarea::placeholder,
+input::placeholder {
     font-size: 0.875rem;
-    color:  #A4A4A4;
-    ;
+    color: #a4a4a4;
     text-transform: capitalize;
-  
-  }
-  
- .inputBar {
-margin-top: 0.1rem;
+}
+
+.inputBar {
+    margin-top: 0.1rem;
     padding: 1.03125rem;
     padding-left: 1rem;
     border-radius: 0.3125rem;
     font-weight: 400;
     line-height: 16.59px;
-    color: white; 
+    color: white;
     background-color: #080808;
     display: block;
     width: 100%;
-    font-family: 'Rubik',sans-serif;
+    font-family: "Rubik", sans-serif;
     font-size: 0.875rem;
-    border: 0.5px solid 
-    #3F3F3F; 
-  }
-  
-  .inputBar:focus{
+    border: 0.5px solid #3f3f3f;
+}
+
+.inputBar:focus {
     outline: none;
-  }
-  textarea.inputBar{
+}
+textarea.inputBar {
     max-width: 27.625rem;
     height: 6.8125rem;
-  }
-  
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus
-  
-  {
-    -webkit-box-shadow: 0 0 0 30px #080808 inset ;
-    -webkit-text-fill-color: #fff ; 
-   
-  }
+}
 
-  
-  
-  textarea:-moz-autofill,
-  input:-moz-autofill {
-    box-shadow: 0 0 0 30px #080808 inset ; 
-    
-   
-   
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #080808 inset;
+    -webkit-text-fill-color: #fff;
+}
+
+textarea:-moz-autofill,
+input:-moz-autofill {
+    box-shadow: 0 0 0 30px #080808 inset;
+}

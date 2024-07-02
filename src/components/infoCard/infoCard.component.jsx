@@ -1,4 +1,3 @@
-
 /**
  * InfoCard component displays a card with a title and content.
  *
@@ -17,13 +16,14 @@
  * @returns {JSX.Element} A styled information card component.
  */
 
-
-import './infoCard.style.css'
-function InfoCard({children,title,info=false}) {
-  return ( <div  className={`${info&&'info'} info__card`}>
-    <p className="info__title">{title}</p>
-    <div className="info__data">{children}</div>
-  </div> );
+import "./infoCard.style.css";
+function InfoCard({ children, title, info = false }) {
+    return (
+        <div className={`${info && "info"} info__card`}>
+            <p className="info__title">{title}</p>
+            <div className="info__data">{children}</div>
+        </div>
+    );
 }
 
 export default InfoCard;

@@ -1,13 +1,13 @@
-.info__card{
-  padding:2rem 2.75rem;
-  border-radius:0.4375rem ;
-  border: 1px solid #1f1f1f;
-  background-color: #080808;
+.info__card {
+    padding: 2rem 2.75rem;
+    border-radius: 0.4375rem;
+    border: 1px solid #1f1f1f;
+    background-color: #080808;
 }
 
-.info__card.info{
-  padding-right: 0;
+.info__card.info {
+    padding-right: 0;
 }
-.info__data{
-  margin-top: 1.125rem;
+.info__data {
+    margin-top: 1.125rem;
 }

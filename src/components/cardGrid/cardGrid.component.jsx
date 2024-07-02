@@ -28,13 +28,13 @@ import "./cardGrid.style.css";
 * @property {Array<string>} [options] - The options for dropdown inputType.
 */
 function CardGrid({
-    cardFormTitle='',
-    cards=[],
-    cardFormButtonText='',
+    cardFormTitle = "",
+    cards = [],
+    cardFormButtonText = "",
     fallbackText = "No Data Available Yet!",
     gridSize = "big",
-    disableButtons=false,
-    cardSize='small',
+    disableButtons = false,
+    cardSize = "small",
 }) {
     const isDataEmpty = !cards || cards.length === 0;
     return (
@@ -42,7 +42,14 @@ function CardGrid({
             {isDataEmpty && <p className="fallbackText">{fallbackText}</p>}
             {!isDataEmpty &&
                 cards.map((card) => (
-                    <Card key={card.id} disableButtons={disableButtons} cardFormButtonText={cardFormButtonText} cardFormTitle={cardFormTitle}   size={cardSize} {...card} />
+                    <Card
+                        key={card.id}
+                        disableButtons={disableButtons}
+                        cardFormButtonText={cardFormButtonText}
+                        cardFormTitle={cardFormTitle}
+                        size={cardSize}
+                        {...card}
+                    />
                 ))}
         </div>
     );

@@ -3,12 +3,11 @@
     border: 1px solid #373737;
     border-radius: 7px;
     background-color: #080808;
-    margin: 2rem auto ;
+    margin: 2rem auto;
     width: 34.75rem;
     overflow-y: scroll;
     max-height: 92vh;
     clip-path: inset(0 0 0 0 round 7px);
-   
 }
 
 .modal[open] {
@@ -19,29 +18,27 @@
 }
 
 .modal::-webkit-scrollbar {
-    width: 8px; 
+    width: 8px;
 }
 
 .modal::-webkit-scrollbar-track {
-    background: #333; 
-    border-radius: 7px; 
+    background: #333;
+    border-radius: 7px;
 }
 
 .modal::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 7px; 
+    border-radius: 7px;
 }
 
 .modal::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
 }
-
 
 .modal {
-    scrollbar-width: thin; 
-    scrollbar-color: #888 #333; 
+    scrollbar-width: thin;
+    scrollbar-color: #888 #333;
 }
-
 
 .modal {
     -ms-overflow-style: -ms-autohiding-scrollbar;

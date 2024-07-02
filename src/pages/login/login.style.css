@@ -1,66 +1,60 @@
-.main__login{
-
-  margin:0  2.4rem;
-  margin-top: 1.8rem;
+.main__login {
+    margin: 0 2.4rem;
+    margin-top: 1.8rem;
 }
-.section__login{
-  margin: 0 auto;
-  max-width: 24.375rem;
-  padding: 1.75rem 1.875rem;
-  
-
+.section__login {
+    margin: 0 auto;
+    max-width: 24.375rem;
+    padding: 1.75rem 1.875rem;
 }
 
-.login__form{
-  display: flex;
-flex-direction: column;
-gap: 1.75rem;
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+.login_error__message {
+    border: solid #9a1212 3px;
+    color: #9a1212;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    background-color: transparent;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    visibility: hidden;
+    text-align: center;
+}
+.visible.login_error__message {
+    visibility: visible;
+}
 
+.section__login .primary__title {
+    margin-bottom: 1.75rem;
 }
-.login_error__message{
-  border:solid #9a1212 3px;
-  color: #9a1212;
-  font-size: 1.4rem;
-  text-transform: capitalize;
-  font-weight: 500;
-  background-color: transparent;
-  padding: 1.2rem;
-  margin-bottom: 2rem;
-  visibility: hidden;
-text-align: center;
+@media (max-width: 37.5em) {
+    html {
+        font-size: 93.75%;
+    }
 }
-.visible.login_error__message{
-visibility: visible;
+@media (max-width: 28.125em) {
+    html {
+        font-size: 81.25%;
+    }
 }
-
-.section__login .primary__title{
-  margin-bottom: 1.75rem;
+@media (max-width: 25em) {
+    html {
+        font-size: 68.75%;
+    }
+    .main__login {
+        margin-top: 11rem;
+    }
 }
-@media (max-width:37.5em){
-  html{
-    font-size: 93.75%;
-  }
-}
-@media (max-width:28.125em){
-  html{
-    font-size: 81.25%;
-  }
-}
-@media (max-width:25em){
-  html{
-    font-size: 68.75%;
-  }
-  .main__login{
-
-    margin-top: 11rem;
-  }
-}
-@media (max-width:20.625em){
-  html{
-    font-size: 62.5%;
-  }
-  .main__login{
-
-    margin-top: 15rem;
-  }
+@media (max-width: 20.625em) {
+    html {
+        font-size: 62.5%;
+    }
+    .main__login {
+        margin-top: 15rem;
+    }
 }

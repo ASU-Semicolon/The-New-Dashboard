@@ -1,24 +1,24 @@
-.candidate_details{
-  display: flex;
-  flex-direction: column;
-  gap: 1.125rem;
-  margin-top: 2.6875rem;
+.candidate_details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    margin-top: 2.6875rem;
 }
-.candidate_dropdown__cont{
-  max-width: 15.125rem;
+.candidate_dropdown__cont {
+    max-width: 15.125rem;
 }
 /* 54 */
-.delete_button__cont{
-  margin-top:3.375rem ;
-  width: 9.9375rem;
-  height: 1.6875rem;
+.delete_button__cont {
+    margin-top: 3.375rem;
+    width: 9.9375rem;
+    height: 1.6875rem;
 }
 
-.delete_button__cont button{
-  padding: 0rem;
+.delete_button__cont button {
+    padding: 0rem;
 }
-@media (max-width:41.625em){
-  .candidate_dropdown__cont{
-    max-width: 100%;
-  }
+@media (max-width: 41.625em) {
+    .candidate_dropdown__cont {
+        max-width: 100%;
+    }
 }

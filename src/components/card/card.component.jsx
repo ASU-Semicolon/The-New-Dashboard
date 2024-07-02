@@ -29,19 +29,29 @@ import { useNavigation, useSubmit } from "react-router-dom";
  * @property {string} [inputType] - The type of the form field (e.g., text, dropdown).
  * @property {Array<string>} [options] - The options for dropdown inputType.
  */
-function Card({ title='',disableButtons=false, data={},cardFormFields='',cardFormTitle='',cardFormButtonText='', id='', size = "big" }) {
-    const [showModal,setShowModal]=useState(false)
-    const navigation=useNavigation()
-    const isDeleting=navigation.state==='submitting'
-   const submit=useSubmit()
-   function deleteButtonHandler(){
-
-       submit({ id },
-       {
-         method: "delete",
-         encType: "application/x-www-form-urlencoded",
-       })
-   }
+function Card({
+    title = "",
+    disableButtons = false,
+    data = {},
+    cardFormFields = "",
+    cardFormTitle = "",
+    cardFormButtonText = "",
+    id = "",
+    size = "big",
+}) {
+    const [showModal, setShowModal] = useState(false);
+    const navigation = useNavigation();
+    const isDeleting = navigation.state === "submitting";
+    const submit = useSubmit();
+    function deleteButtonHandler() {
+        submit(
+            { id },
+            {
+                method: "delete",
+                encType: "application/x-www-form-urlencoded",
+            },
+        );
+    }
     const isDataMultiple = Object.keys(data).length > 1;
     const dataList = (
         <div className="card-list">
@@ -55,41 +65,71 @@ function Card({ title='',disableButtons=false, data={},cardFormFields='',cardFor
             ])}
         </div>
     );
-    return (<><Modal setShowModal={setShowModal} showModal={showModal}>  <ModalForm method="patch" cancelButtonHandler={()=>{setShowModal(false)}} title={cardFormTitle} id={id} buttonText={cardFormButtonText} fieldsArr={cardFormFields}/></Modal>
-        <div className={`${size.toLowerCase()} card`}>
-            <div className="card-text-cont">
-                <p className="card-title">{title}</p>
-                {isDataMultiple ? (
-                    dataList
-                ) : (
-                    <span className="card-description">
-                        {Object.values(data)[0]}
-                    </span>
-                )}
-            </div>
-            <div className="card-button-cont">
-                <div>
-
-                <Button disabled={disableButtons} onClick={()=>{
-setShowModal(true)
-                }} tinyRadius={true} rounded={false} large={false}  outline={false} small={true}>
-                <span><FaRegEdit className="edit-icon" /></span>
-                    <span>
-                    Edit
-                    </span>
-
-                    </Button>
+    return (
+        <>
+            <Modal setShowModal={setShowModal} showModal={showModal}>
+                {" "}
+                <ModalForm
+                    method="patch"
+                    cancelButtonHandler={() => {
+                        setShowModal(false);
+                    }}
+                    title={cardFormTitle}
+                    id={id}
+                    buttonText={cardFormButtonText}
+                    fieldsArr={cardFormFields}
+                />
+            </Modal>
+            <div className={`${size.toLowerCase()} card`}>
+                <div className="card-text-cont">
+                    <p className="card-title">{title}</p>
+                    {isDataMultiple ? (
+                        dataList
+                    ) : (
+                        <span className="card-description">
+                            {Object.values(data)[0]}
+                        </span>
+                    )}
                 </div>
-                <div>
-
-                 <Button disabled={disableButtons||isDeleting} onClick={deleteButtonHandler} tinyRadius={true} select="warning" rounded={false} large={false} outline={true} small={true}>
-                 <span><IoMdTrash className="delete-icon" /></span><span>Delete</span>
-
-                 </Button>
+                <div className="card-button-cont">
+                    <div>
+                        <Button
+                            disabled={disableButtons}
+                            onClick={() => {
+                                setShowModal(true);
+                            }}
+                            tinyRadius={true}
+                            rounded={false}
+                            large={false}
+                            outline={false}
+                            small={true}
+                        >
+                            <span>
+                                <FaRegEdit className="edit-icon" />
+                            </span>
+                            <span>Edit</span>
+                        </Button>
+                    </div>
+                    <div>
+                        <Button
+                            disabled={disableButtons || isDeleting}
+                            onClick={deleteButtonHandler}
+                            tinyRadius={true}
+                            select="warning"
+                            rounded={false}
+                            large={false}
+                            outline={true}
+                            small={true}
+                        >
+                            <span>
+                                <IoMdTrash className="delete-icon" />
+                            </span>
+                            <span>Delete</span>
+                        </Button>
+                    </div>
                 </div>
             </div>
-        </div>
-                    </>
+        </>
     );
 }
 

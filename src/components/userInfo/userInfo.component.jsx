@@ -11,11 +11,18 @@
  *
  * @returns {JSX.Element} A styled list of user information.
  */
-import './userInfo.style.css'
-function UserInfo({userInfo={}}) {
-  return ( <ul className='user_info'>
-  {Object.keys(userInfo).map((info)=><li key={info} className=" description user_info__item">{`${info}: ${userInfo[info]}`}</li>)}
-  </ul> );
+import "./userInfo.style.css";
+function UserInfo({ userInfo = {} }) {
+    return (
+        <ul className="user_info">
+            {Object.keys(userInfo).map((info) => (
+                <li
+                    key={info}
+                    className=" description user_info__item"
+                >{`${info}: ${userInfo[info]}`}</li>
+            ))}
+        </ul>
+    );
 }
 
 export default UserInfo;

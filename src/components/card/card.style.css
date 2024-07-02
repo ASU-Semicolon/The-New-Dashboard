@@ -31,18 +31,18 @@
     gap: 21px;
     overflow: hidden;
     text-overflow: ellipsis;
-    width:100%;
+    width: 100%;
     white-space: nowrap;
 }
 
 .card-button-cont {
     display: flex;
     gap: 1.25rem;
-   
+
     justify-content: space-between;
     height: 1.6875rem;
 }
-.card-button-cont div{
+.card-button-cont div {
     width: 45.5%;
     height: 100%;
 }
@@ -54,11 +54,11 @@
     margin-bottom: 2.625rem;
 }
 .delete-icon,
-.edit-icon{
+.edit-icon {
     margin-bottom: -2px;
     width: 1.1rem;
-   
-    height:1.1rem ;
+
+    height: 1.1rem;
     align-self: center;
 }
 .card-list {
