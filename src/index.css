@@ -67,3 +67,29 @@ body{
           margin-top: 4rem;
           font-size: 1.4rem;
   }
+  .info__title{
+    color: #fff;
+    font-weight: 400;
+    line-height:2.375rem ;
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+  .candidate__grid{
+display: grid;
+grid-template-columns: 1fr 2.2671fr;
+column-gap:4.5rem ;
+max-width: 64.125rem;
+margin: 0 auto;
+margin-top: 4.5rem;
+  }
+  .description{
+
+    font-size:0.875rem ;
+    font-weight: 400;
+    line-height:1.037rem ;
+    color: #fff;
+  }
+  textarea{
+    resize: none;
+    /* overflow-x: scroll; */
+  }

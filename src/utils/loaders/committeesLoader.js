@@ -16,9 +16,28 @@ import { getToken } from "../authData"
   
 
  const {data}= await response.json()
- console.log(data)
+ 
  return data
 }
+ async function  loadSectors(){
+  const token=getToken()
+
+
+
+  const response=await fetch('http://localhost:8000/api/constants?type=sectors',{
+    headers:{
+      Authorization:'Bearer '+token
+    
+
+    }
+  })
+  
+
+ const {data}= await response.json()
+ 
+ return data
+}
+
 export default async function loader(){
   const token=getToken()
  
@@ -28,6 +47,7 @@ export default async function loader(){
   
   
   return defer({
-    committees:loadCommittees()
+    committees:loadCommittees(),
+    sectors:loadSectors()
   })
 }

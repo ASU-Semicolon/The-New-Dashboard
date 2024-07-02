@@ -17,7 +17,25 @@ import { loadUsers } from "./usersLoader"
   
 
  const {data}= await response.json()
- console.log(data)
+
+ return data
+}
+async function  loadStates(){
+  const token=getToken()
+
+
+
+  const response=await fetch('http://localhost:8000/api/constants?type=workshop-states',{
+    headers:{
+      Authorization:'Bearer '+token
+    
+
+    }
+  })
+  
+
+ const {data}= await response.json()
+
  return data
 }
 export default async function loader(){
@@ -31,6 +49,7 @@ export default async function loader(){
     users:loadUsers()
 ,committees: loadCommittees(),
 workshops:loadWorkshops()
+,states:loadStates()
 
   })
 }

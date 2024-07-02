@@ -1,6 +1,9 @@
 .users-cont {
   max-width: 15.3125rem;
   background-color: transparent;
+  border-right: 1px solid rgba(55, 55, 55, 0.54);
+  padding-right: 2.875rem;
+  align-self: self-start;
 }
 .search-filter-cont {
   display: flex;
@@ -20,24 +23,39 @@
 .user-link {
   text-decoration: none;
   display: flex;
-  padding: 0.5625rem 0.375rem;
+  padding: 9px 6px;
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
+
   align-items: center;
   transition: all 0.3s;
   cursor: pointer;
 }
 .user-link span:first-of-type {
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 14px;
   color: #fff;
   line-height: 1.036875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  width: 100%;
 }
 .user-link span:last-of-type {
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 400;
   color: #a4a4a4;
   line-height: 0.88875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width:100%;
+ 
+  text-align: right;
+ 
+  white-space: nowrap;
 }
 .users-list {
   list-style: none;

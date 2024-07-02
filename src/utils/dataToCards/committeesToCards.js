@@ -1,4 +1,4 @@
-export default function committeesToCards(committees){
+export default function committeesToCards(committees,sectors){
   let vice_directorExists=false;
  
   
@@ -15,11 +15,7 @@ export default function committeesToCards(committees){
 
       }else if(field.toLowerCase()==='sector'){
       return{
-        label:field.toLowerCase(),options:['web development',
-        'embedded systems',
-        'software engineering',
-        'operational',
-        'other',] ,
+        label:field.toLowerCase(),options:sectors,
         defaultValue:committee[field],
         inputType:'dropdown'
             }

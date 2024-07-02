@@ -18,7 +18,7 @@ import { MdOutlineExpandMore } from "react-icons/md";
  */
 const Dropdown = ({
     options = [],
-    
+    paddingSize='small',
     onSelect=()=>{},
     deafultValue = "Select an option",
 }) => {
@@ -58,7 +58,7 @@ const Dropdown = ({
 
     return (
         <div className="dropdown" ref={dropdownRef}>
-            <div className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
+            <div className={`${paddingSize.toLowerCase()} dropdown-toggle`} onClick={() => setIsOpen(!isOpen)}>
                 <div className="dropdown-toggle-text">
                     {selectedOption || deafultValue}
                 </div>
@@ -74,7 +74,7 @@ const Dropdown = ({
                     {options.map((option) => (
                         <li
                             key={typeof option==='object'?option.value:option}
-                            className="dropdown-item"
+                            className={`${paddingSize.toLowerCase()} dropdown-item`}
                             onClick={() =>
                                 handleOptionClick(typeof option==='object'?option:option.toLowerCase())
                             }

@@ -47,8 +47,8 @@ const Navbar = ({isAuthenticated=true,isAdmin=true}) => {
     { title: "Users", path: "/users" },
     { title: "Committees", path: "/committees" },
     { title: "Workshops", path: "/workshops" },
-    { title: "Participants", path: "/participants" },
-    { title: "Members", path: "/members" },
+    { title: "Students", path: "/students?type=student" },
+    { title: "Members", path: "/members?type=member" },
     { title: "Interviewer", path: "/interviewer" },
   ];
 if(!isAdmin){

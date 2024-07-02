@@ -31,7 +31,6 @@ requestFormData.start_date=date.toISOString();
   requestFormData.committee=data.get('committee')||undefined
   requestFormData.instructor=data.get('instructor')||undefined
   requestFormData.prerequisites=data.get('prerequisites')?data.get('prerequisites').toLowerCase().split(','):undefined
-  console.log(requestFormData)
   const options={
     method:request.method,
     headers:{
@@ -55,7 +54,19 @@ url+=id
   
   const response=await fetch(url,options)
 
-const responseData= await response.json()
-console.log(responseData)
-return responseData
+  const returnedData={
+    method:request.method.toLowerCase(),
+  status:response.status
+  }
+  const responseData= await response.json()
+  if(response.status===200||response.status===201){
+  returnedData.actionData={id:id||responseData.data.id,
+    data:responseData.data
+  }
+  }
+  else{
+    returnedData.errors=responseData.message
+  }
+ 
+  return returnedData
 }

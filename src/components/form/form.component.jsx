@@ -1,4 +1,4 @@
-import { Form, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 import Button from "../button/button.component";
 import InputWithLabel from "../Input-with-label/Input-with-label.component";
 import './form.style.css'
@@ -41,13 +41,35 @@ function ModalForm({method='post',fieldsArr=[],title='',buttonText='Add' ,showMo
   const[selectedValues,dispatch]=useReducer(reducer,[])
   const formRef=useRef()
  const navigation= useNavigation()
+ const actionData=useActionData()
+const [errors,setErrors]=useState()
+
+useEffect(()=>{
+  if(actionData&&actionData.status===400&showModal){
+ 
+
+    const dataErrors = {};
+    
+    actionData.errors.forEach((str) => {
+    const firstWord = str.split(' ')[0];
+    
+    if (!(firstWord in dataErrors)) {
+      dataErrors[firstWord] = str;
+    }
+  });
+ 
+  setErrors(dataErrors)
+}
+},[actionData])
+
+
  const isSubmitting=navigation.state==='submitting'
  
  const selectedNames=[];
  const selectedDefs=[];
  useEffect(() => {
-  
-  if (!isSubmitting) {
+   if (!isSubmitting&&(!actionData||!actionData.status===400)&&showModal) {
+    
     if(formRef.current){
       
       formRef.current.reset()
@@ -58,6 +80,11 @@ function ModalForm({method='post',fieldsArr=[],title='',buttonText='Add' ,showMo
 useEffect(()=>{
   if(!showModal&&!id&&formRef.current){
     formRef.current.reset()
+
+  }
+  if(!showModal){
+     setErrors(undefined)
+   
   }
 },[showModal])
  
@@ -74,13 +101,14 @@ useEffect(()=>{
     selectedDefs.push(typeof field.options[0]==='object'?'':field.defaultValue)
     return( <div key={field.label} className="input">
       <label className="label"> {field.label}</label>
+      <small className={`${errors&&errors[field.label]?'visible':''}`}>{`please select a ${field.label}`}</small>
 <Dropdown   onSelect={(selectedValue)=>{
   dispatch({type:'Update',payload:{index:selectedIndex,value:selectedValue}})
 }}  options={field.options} deafultValue={field.defaultValue|| `select a ${field.label}`}/>
     </div>
     )
   }else{
-    return <InputWithLabel key={field.label} htmlFor={id?`${field.label} ${id}`:field.label}   label={field.label} multiline={field.multiline?field.multiline:false} defaultValue={field.defaultValue?field.defaultValue:null} placeholder={field.placeholder?field.placeholder:`Enter ${field.label}`} inputType={field.inputType?field.inputType:'text'} />
+    return <InputWithLabel errorMessage={errors&&errors[field.label]||''}  key={field.label} htmlFor={id?`${field.label} ${id}`:field.label}   label={field.label} multiline={field.multiline?field.multiline:false} defaultValue={field.defaultValue?field.defaultValue:null} placeholder={field.placeholder?field.placeholder:`Enter ${field.label}`} inputType={field.inputType?field.inputType:'text'} />
   }
 })}
 {id&&<input type="hidden" name="id" value={id}/>}

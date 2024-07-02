@@ -46,8 +46,18 @@ url+=id
   }
   
   const response=await fetch(url,options)
-
+const returnedData={
+  method:request.method.toLowerCase(),
+status:response.status
+}
 const responseData= await response.json()
-console.log(responseData)
-return responseData
+if(response.status===200||response.status===201){
+returnedData.actionData={id:id||responseData.data.id,
+  data:responseData.data
+}
+}
+else{
+  returnedData.errors=responseData.message
+}
+return returnedData
 }

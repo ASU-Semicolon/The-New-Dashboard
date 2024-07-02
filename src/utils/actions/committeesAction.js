@@ -25,7 +25,6 @@ if(!isAdmin){
   requestFormData.title=data.get('title')&&data.get('title').toLowerCase().trim()
   requestFormData.vice_director=data.get('vice director')?data.get('vice director').toLowerCase().trim():undefined
   requestFormData.heads=data.get('heads')?data.get('heads').toLowerCase().split(','):undefined
-  console.log(requestFormData)
   const options={
     method:request.method,
     headers:{
@@ -50,8 +49,18 @@ if(!isAdmin){
       }
   
   const response=await fetch(url,options)
-
-const responseData= await response.json()
-console.log(responseData)
-return responseData
+  const returnedData={
+    method:request.method.toLowerCase(),
+  status:response.status
+  }
+  const responseData= await response.json()
+  if(response.status===200||response.status===201){
+  returnedData.actionData={id:id||responseData.data.id,
+    data:responseData.data
+  }
+  }
+  else{
+    returnedData.errors=responseData.message
+  }
+  return returnedData
 }

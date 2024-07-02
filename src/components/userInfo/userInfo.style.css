@@ -1,0 +1,17 @@
+.user_info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5625rem;
+  list-style: none;
+}
+.user_info__item{
+  
+  padding-bottom: 0.5625rem;
+  border-bottom: 1px solid #1f1f1f;
+  text-transform: capitalize;
+}
+.user_info__item:last-child{
+  padding-bottom: 0;
+  border-bottom: none;
+
+}

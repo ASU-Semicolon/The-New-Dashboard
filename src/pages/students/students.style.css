@@ -1,8 +1,7 @@
-.section__members{
+.section__students{
   margin: 0 2.4rem 2rem ;
 
 }
-
 @media (max-width:56.25em) {
   
   html:has(.candidate__grid){
@@ -19,15 +18,15 @@
   html:has(.candidate__grid){
     font-size: 100%;
   }
-  .section__members .candidate__grid{
+  .section__students .candidate__grid{
     grid-template-columns: 1fr ;
     row-gap: 3rem;
   }
-  .section__members .candidate__grid .delete_button__cont{
+  .section__students .candidate__grid .delete_button__cont{
     width: 100%;
     height: 3.0834rem;
   }
-  .section__members .candidate__grid .delete_button__cont button{
+  .section__students .candidate__grid .delete_button__cont button{
     font-size: 1.334rem;
 text-transform: capitalize;
   }

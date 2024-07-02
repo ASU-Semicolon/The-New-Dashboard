@@ -1,6 +1,7 @@
 export const addUserFormData=(committees)=>[
   {label:'name' ,placeholder:'Enter Name'},
   {label:'phone' ,placeholder:'Enter Phone'},
+  {label:'email',placeholder:'Enter Email'},
   {label:'password' ,placeholder:'Enter Password' ,inputType:'password'},
   {label:'status' ,options:['active','inactive'] ,inputType:'dropdown'},
   {label:'role' ,placeholder:'Enter Role'},
@@ -10,22 +11,18 @@ export const addUserFormData=(committees)=>[
   }
 
 ]
-export const addCommitteeFormData=[
+export const addCommitteeFormData=(sectors)=>{return[
   {label:'title' ,placeholder:'enter Title'},
   {label:'description' ,placeholder:'enter Description',multiline:true },
   {label:'brief' ,placeholder:'enter Brief'},
-  {label:'sector' ,options:['web development',
-    'embedded systems',
-    'software engineering',
-    'operational',
-    'other',],inputType:'dropdown' },
+  {label:'sector' ,options:sectors,inputType:'dropdown' },
   {label:'image' ,placeholder:'enter image'},
   {label:'season' ,placeholder:'enter season'},
   {label:'director' ,placeholder:'enter director'},
   {label:'vice director' ,placeholder:'enter vice director'},
   {label:'heads' ,placeholder:'enter heads each seperated by a comma'},
   
-]
+]}
 export const addWorkshopFormData=(committees,users)=>{return [
   {label:'title' ,placeholder:'Enter Title'},
   {label:"instructor",options:users?users.map((user)=>{return {name:user.Username,value:user.Id}}):[]

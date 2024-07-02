@@ -3,29 +3,44 @@ import Button from "../../components/button/button.component";
 import CardGrid from '../../components/cardGrid/cardGrid.component';
 import SearchBar from "../../components/search-bar/search.component";
 import Dropdown from "../../components/dropdown/dropdown.component";
-import { Await,useLoaderData,useRouteLoaderData } from "react-router-dom";
+import { useLoaderData,useRouteLoaderData,useActionData } from "react-router-dom";
 import { addWorkshopFormData } from "../../utils/formsData";
 import workshopsToCards from "../../utils/dataToCards/workshopsToCards";
 import { IoIosAdd } from "react-icons/io";
 import "./workshops.style.css";
-import { useState ,useEffect,Suspense} from "react";
+import { useState } from "react";
 import Modal from "../../components/modal/modal.component";
 import ModalForm from "../../components/form/form.component";
 import createAvaialbleYears from "../../utils/createAvaiableYears";
-
-
+import { useSelector } from "react-redux";
+import { deleteWorkshop,editWorkshop,addWorkshop,loadWorkshops } from "../../store/workshops";
+import { loadCommittees } from "../../store/committees";
+import { loadUsers } from "../../store/users";
+import useHandleData from "../../hooks/handleData";
+import useFetchData from "../../hooks/fetchData";
+import { loadStates } from "../../store/constants";
 function Workshops() {
-  const {users,committees,workshops}=useLoaderData()
+  const {users,committees,workshops,states}=useLoaderData()
   const{isAdmin}=useRouteLoaderData('root')
+  const workshopData=useActionData()
+  const workshopsData=useSelector(state=>state.workshops)
+  const statesData=useSelector(state=>state.constants.states)
+  const committeesData=useSelector(state=>state.committees)
+  const usersData=useSelector(state=>state.users)
   const availableYears=createAvaialbleYears(2023)
   const defaultYear=availableYears[availableYears.length-1]
   const [showModal,setShowModal]=useState(false)
   const [searchInput,setSearchInput]=useState('')
   const [selectedYear,setSelectedYear]=useState(defaultYear)
-  const [usersData,setUsersData]=useState(undefined)
-
-  const [workshopsData,setWorkshopsData]=useState([])
-  const [committeesData,setCommitteesData]=useState(undefined)
+  const isFetching=useFetchData(workshops,loadWorkshops)
+  const isFetchingCommittees=useFetchData(committees,loadCommittees)
+  const isFetchingUsers=useFetchData(users,loadUsers)
+  const isFetchingStates=useFetchData(states,loadStates)
+  const isLoading=isFetching&&(workshopsData.length===0)
+  const isLoadingCommittees=isFetchingCommittees&&committeesData.length===0
+  const isLoadingUsers=isFetchingUsers&&usersData.length===0
+  const isLoadingStates=isFetchingStates&&statesData.length===0
+  useHandleData(workshopData,{addData:addWorkshop,editData:editWorkshop,deleteData:deleteWorkshop})
  const filteredWorkshops=workshopsData.filter((workshop)=>
 {
   if(workshop.Season===selectedYear){
@@ -36,34 +51,7 @@ function Workshops() {
   
   }
  )
-  useEffect(() => {
-    if (users) {
-      users.then(data => {setUsersData(data)
-           
-
-      }).catch(error => {
-        console.error("Failed to load data:", error);
-      });
-    }
-    if (committees) {
-      committees.then(data => {setCommitteesData(data)
-           
-
-      }).catch(error => {
-        console.error("Failed to load data:", error);
-      });
-    }
-    if (workshops) {
-      workshops.then(data => {setWorkshopsData(data)
-           
-
-      }).catch(error => {
-        console.error("Failed to load data:", error);
-      });
-    }
-  }, [users,workshops,committees]);
-  
-  
+ 
   return (<> <Modal setShowModal={setShowModal} showModal={showModal}><ModalForm buttonText="Add Workshop" showModal={showModal}   cancelButtonHandler={()=>{
     setShowModal(false)
   }} title="Add Workshop" fieldsArr={addWorkshopFormData(committeesData,usersData)}/></Modal>
@@ -72,7 +60,7 @@ function Workshops() {
     <div className="add_workshop__cont">
       <Button select="primary" onClick={()=>{
         setShowModal(true)
-      }} disabled={!committeesData||!usersData||!isAdmin} rounded={false} small={true} outline={false} large={false}><span><IoIosAdd className="add-icon"/></span><span className="add_button__text">
+      }} disabled={isLoadingCommittees||isLoadingStates||isLoadingUsers||!isAdmin} rounded={false} small={true} outline={false} large={false}><span><IoIosAdd className="add-icon"/></span><span className="add_button__text">
         Add Workshop
         </span>
         </Button>
@@ -87,17 +75,18 @@ function Workshops() {
       <Dropdown deafultValue={defaultYear} onSelect={setSelectedYear} options={availableYears}/>
       </div>
        </div>
-       <Suspense fallback={<p className="loading_text" style={{
-       }}>Loading Workshops...</p>}>
-        <Await resolve={workshops}>
-          {(workshops) => {
+      
+       
+       {isLoading?
+      <p className="loading_text" style={{
+       }}>Loading Workshops...</p>
+       
           
+          :   
            
-           return <CardGrid disableButtons={!committeesData||!usersData||!isAdmin} cardSize="small" cardFormTitle='Edit Workshop'
+          <CardGrid disableButtons={isLoadingCommittees||isLoadingStates||isLoadingUsers||!isAdmin} cardSize="small" cardFormTitle='Edit Workshop'
 cardFormButtonText='Edit Workshop'   gridSize="big" fallbackText="No Workshops Found." cards={workshopsToCards(usersData,committeesData,filteredWorkshops)}/>
-          }}
-        </Await>
-      </Suspense>
+      }
   </main> 
   </>
    );
