@@ -22,7 +22,7 @@
     background-color: black;
 }
 .fade-circle {
-    width: 100px;
+    width: 6.25rem;
     aspect-ratio: 1/1;
     position: absolute;
     top: 50%;
@@ -36,7 +36,7 @@
     animation-delay: 300ms;
 }
 .loader-logo {
-    width: 120px;
+    width: 7.5rem;
     background-color: black;
     border-radius: 50%;
     animation: scale 1.5s cubic-bezier(0.4, 0.1, 0.6, 1) alternate-reverse
@@ -45,11 +45,11 @@
 @keyframes fade {
     from {
         opacity: 0.5;
-        box-shadow: 0 0 60px 0px #fba21294;
+        box-shadow: 0 0 3.75rem 0px #fba21294;
     }
     to {
         opacity: 0.01;
-        box-shadow: 0 0 60px 300px #fba21210;
+        box-shadow: 0 0 3.75rem 18.75rem #fba21210;
     }
 }
 @keyframes scale {

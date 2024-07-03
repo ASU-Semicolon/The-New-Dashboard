@@ -16,6 +16,7 @@ import usersToCards from "../../utils/dataToCards/usersToCards";
 import { addUserFormData } from "../../utils/formsData";
 import createAvaialbleYears from "../../utils/createAvaiableYears";
 import useFetchData from "../../hooks/fetchData";
+import Loader from "../../components/loader/loader.component";
 function Users() {
     const { users, committees } = useLoaderData();
     const userData = useActionData();
@@ -97,9 +98,10 @@ function Users() {
                     </div>
                 </div>
                 {isLoading ? (
-                    <p className="loading_text" style={{}}>
-                        Loading Users...
-                    </p>
+                    <Loader
+                        style={{ marginTop: "64px" }}
+                        isLoading={isLoading}
+                    />
                 ) : (
                     <CardGrid
                         disableButtons={isLoadingCommittees}

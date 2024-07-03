@@ -11,6 +11,7 @@ import candidateToCard from "../../utils/dataToCards/candidateToCard";
 import candidatesToUsers from "../../utils/dataToCards/candidatesToUsers";
 import { useMemo, useState } from "react";
 import filterArray from "../../utils/filterArray";
+import Loader from "../../components/loader/loader.component";
 function StudentsPage() {
     const [searchParams] = useSearchParams();
     const studentsData = useSelector((state) => state.students);
@@ -53,9 +54,10 @@ function StudentsPage() {
                 </div>
                 <div className="seperator"></div>
                 {isLoading ? (
-                    <p className="loading_text" style={{}}>
-                        Loading Students...
-                    </p>
+                    <Loader
+                        style={{ marginTop: "4rem" }}
+                        isLoading={isLoading}
+                    />
                 ) : (
                     <div className="candidate__grid">
                         <UsersList

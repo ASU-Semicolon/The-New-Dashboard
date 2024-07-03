@@ -27,6 +27,7 @@ import { loadUsers } from "../../store/users";
 import useHandleData from "../../hooks/handleData";
 import useFetchData from "../../hooks/fetchData";
 import { loadStates } from "../../store/constants";
+import Loader from "../../components/loader/loader.component";
 function Workshops() {
     const { users, committees, workshops, states } = useLoaderData();
     const { isAdmin } = useRouteLoaderData("root");
@@ -66,7 +67,6 @@ function Workshops() {
 
     return (
         <>
-            {" "}
             <Modal setShowModal={setShowModal} showModal={showModal}>
                 <ModalForm
                     buttonText="Add Workshop"
@@ -122,9 +122,10 @@ function Workshops() {
                 </div>
 
                 {isLoading ? (
-                    <p className="loading_text" style={{}}>
-                        Loading Workshops...
-                    </p>
+                    <Loader
+                        style={{ marginTop: "64px" }}
+                        isLoading={isLoading}
+                    />
                 ) : (
                     <CardGrid
                         disableButtons={

@@ -71,18 +71,15 @@ function ModalForm({
 
     const selectedNames = [];
     const selectedDefs = [];
+    const noErrors = actionData && actionData.status !== 400;
     useEffect(() => {
-        if (
-            !isSubmitting &&
-            (!actionData || !actionData.status === 400) &&
-            showModal
-        ) {
+        if (!isSubmitting && noErrors && showModal) {
             if (formRef.current) {
                 formRef.current.reset();
             }
             cancelButtonHandler();
         }
-    }, [isSubmitting]);
+    }, [isSubmitting, actionData]);
     useEffect(() => {
         if (!showModal && !id && formRef.current) {
             formRef.current.reset();

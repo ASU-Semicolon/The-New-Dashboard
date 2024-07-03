@@ -25,6 +25,7 @@ import {
     deleteCommittee,
     editCommittee,
 } from "../../store/committees";
+import Loader from "../../components/loader/loader.component";
 function Committees() {
     const { committees, sectors } = useLoaderData();
     const { isAdmin } = useRouteLoaderData("root");
@@ -62,7 +63,6 @@ function Committees() {
 
     return (
         <>
-            {" "}
             <Modal setShowModal={setShowModal} showModal={showModal}>
                 <ModalForm
                     buttonText="Add Committee"
@@ -112,9 +112,10 @@ function Committees() {
                     </div>
                 </div>
                 {isLoading ? (
-                    <p className="loading_text" style={{}}>
-                        Loading Committees...
-                    </p>
+                    <Loader
+                        style={{ marginTop: "64px" }}
+                        isLoading={isLoading}
+                    />
                 ) : (
                     <CardGrid
                         cardSize="small"

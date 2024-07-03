@@ -22,33 +22,34 @@ const SearchBar = ({
     const changeHandler = (value) => {
         setIsEntered(false);
         setSearchValue(value);
+        setSearchInput(value);
     };
     //submit search  after 1.5sec from last change of input value if it is not empty
-    useEffect(() => {
-        let timer;
-        if (searchValue.length > 0) {
-            timer = setTimeout(() => {
-                setIsEntered(true);
-                setSearchInput(searchValue);
-            }, 1500);
-        }
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [searchValue]);
+    // useEffect(() => {
+    //     let timer;
+    //     if (searchValue.length > 0) {
+    //         timer = setTimeout(() => {
+    //             setIsEntered(true);
+    //             setSearchInput(searchValue);
+    //         }, 1500);
+    //     }
+    //     return () => {
+    //         clearTimeout(timer);
+    //     };
+    // }, [searchValue]);
 
     //submit search by pressing search button
     const submitHandler = () => {
         setIsEntered(true);
         setSearchInput(searchValue);
-        setSearchValue("");
+        // setSearchValue("");
     };
     //submit search by pressing enter key
     const enterKeyHandler = (e) => {
         if (e.key === "Enter") {
             setIsEntered(true);
             setSearchInput(searchValue);
-            setSearchValue("");
+            // setSearchValue("");
         }
     };
     return (

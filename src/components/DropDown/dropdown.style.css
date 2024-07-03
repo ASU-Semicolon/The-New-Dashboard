@@ -26,6 +26,12 @@
 }
 .dropdown-toggle-text {
     display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    width: 100%;
 }
 
 .dropdown-toggle.open {
