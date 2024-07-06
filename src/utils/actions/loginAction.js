@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 export default async function action({ request }) {
   const data = await request.formData();
   const user = {
