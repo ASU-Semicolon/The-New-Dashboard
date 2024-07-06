@@ -71,7 +71,7 @@ function ModalForm({
 
     const selectedNames = [];
     const selectedDefs = [];
-    const noErrors = actionData && actionData.status !== 400;
+    const noErrors = (!actionData)||actionData.status !== 400;
     useEffect(() => {
         if (!isSubmitting && noErrors && showModal) {
             if (formRef.current) {

@@ -5,7 +5,7 @@ import { loadUsers } from "./usersLoader";
 async function loadWorkshops() {
     const token = getToken();
 
-    const response = await fetch("http://localhost:8000/api/workshops", {
+    const response = await fetch(`${import.meta.env.VITE_URL}/api/workshops`, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -19,7 +19,7 @@ async function loadStates() {
     const token = getToken();
 
     const response = await fetch(
-        "http://localhost:8000/api/constants?type=workshop-states",
+       `${import.meta.env.VITE_URL}/api/constants?type=workshop-states`,
         {
             headers: {
                 Authorization: "Bearer " + token,
