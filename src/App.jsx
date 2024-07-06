@@ -9,7 +9,7 @@ import  loginAction  from "./utils/actions/loginAction";
 import workshopsAction from "./utils/actions/workshopsAction";
 import committeesAction from "./utils/actions/committeesAction";
 import candidateAction from "./utils/actions/candidateAction";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {  RouterProvider , createHashRouter} from "react-router-dom";
 import usersLoader from "./utils/loaders/usersLoader";
 import authLoader from "./utils/loaders/authLoader";
 import homeLoader from "./utils/loaders/homeLoader";
@@ -17,7 +17,7 @@ import candidatesLoader from "./utils/loaders/candidatesLoader";
 import workshopsLoader from "./utils/loaders/workshopsLoader";
 import committeesLoader from "./utils/loaders/committeesLoader";
 import MembersPage from "./pages/members/members.page";
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Root />,
@@ -71,5 +71,6 @@ const router = createBrowserRouter([
 function App() {
     return <RouterProvider router={router} />;
 }
+
 
 export default App;
