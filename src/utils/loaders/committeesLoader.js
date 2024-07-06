@@ -4,7 +4,7 @@ import { getToken } from "../authData";
 export async function loadCommittees() {
     const token = getToken();
 
-    const response = await fetch("http://localhost:8000/api/committees", {
+    const response = await fetch(`${import.meta.env.VITE_URL}/api/committees`, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -18,7 +18,7 @@ async function loadSectors() {
     const token = getToken();
 
     const response = await fetch(
-        "http://localhost:8000/api/constants?type=sectors",
+       `${import.meta.env.VITE_URL}/api/constants?type=sectors`,
         {
             headers: {
                 Authorization: "Bearer " + token,

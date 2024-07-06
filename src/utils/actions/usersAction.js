@@ -1,7 +1,7 @@
 import { redirect } from "react-router-dom";
 import { getToken, isUserAdmin } from "../authData";
 export default async function action({ request }) {
-    let url = "http://localhost:8000/api/users/";
+    let url = `${import.meta.env.VITE_URL}/api/users/`;
     const data = await request.formData();
     const id = data.get("id");
     const token = getToken();

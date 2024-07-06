@@ -6,7 +6,7 @@ export default async function action({ request }) {
     if (!id) {
         redirect("/committees");
     }
-    let url = "http://localhost:8000/api/candidates/" + id;
+    let url = `${import.meta.env.VITE_URL}/api/candidates/${id}`;
     const status = data.get("status");
     const formData = Object.fromEntries(data.entries());
     delete formData.id;

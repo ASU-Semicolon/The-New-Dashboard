@@ -4,7 +4,7 @@ import { loadCommittees } from "./committeesLoader";
 export async function loadUsers() {
     const token = getToken();
 
-    const response = await fetch("http://localhost:8000/api/users", {
+    const response = await fetch(`${import.meta.env.VITE_URL}/api/users`, {
         headers: {
             Authorization: "Bearer " + token,
         },

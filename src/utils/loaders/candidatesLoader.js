@@ -5,7 +5,7 @@ import loadCandidateStatus from "./candidateStatusLoader";
 async function loadCandidates(type, event) {
     const token = getToken();
 
-    let url = "http://localhost:8000/api/candidates?";
+    let url = `${import.meta.env.VITE_URL}/api/candidates?`;
     if (event) {
         url += `event=${event}`;
     }
@@ -26,7 +26,7 @@ async function loadEvents() {
     const token = getToken();
 
     const response = await fetch(
-        "http://localhost:8000/api/constants?type=events",
+       `${import.meta.env.VITE_URL}/api/constants?type=events`,
         {
             headers: {
                 Authorization: "Bearer " + token,

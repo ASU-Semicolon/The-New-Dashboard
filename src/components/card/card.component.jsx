@@ -76,6 +76,7 @@ function Card({
                     }}
                     title={cardFormTitle}
                     id={id}
+                    showModal={showModal}
                     buttonText={cardFormButtonText}
                     fieldsArr={cardFormFields}
                 />
