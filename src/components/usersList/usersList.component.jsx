@@ -158,7 +158,7 @@ function UsersList({
                         firstFilterName.length > 0 ? firstFilterName : undefined
                     }
                     onSelect={setFirstFilterValue}
-                    options={firstFilterOptions}
+                    options={[...firstFilterOptions, "All"]}
                 />
                 <Dropdown
                     paddingSize="big"
@@ -168,12 +168,12 @@ function UsersList({
                             : undefined
                     }
                     onSelect={setsecoundtFilterValue}
-                    options={secoundFilterOptions}
+                    options={[...secoundFilterOptions, "All"]}
                 />
                 <Dropdown
                     deafultValue={thirdFilterDefaultValue || thirdFilterName}
                     onSelect={setThirdFilterValue}
-                    options={thirdFilterOptions}
+                    options={[...thirdFilterOptions, "All"]}
                 />
             </div>
             {filteredUsers.length > 0 ? (
