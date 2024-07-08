@@ -4,7 +4,7 @@ const initialState = {
     states: [],
     events: [],
     status: [],
-    tracks:[]
+    tracks: [],
 };
 const constantsSlice = createSlice({
     name: "constants",
@@ -33,5 +33,5 @@ const constantsSlice = createSlice({
     },
 });
 export default constantsSlice.reducer;
-export const { loadSectors, loadStates, loadEvents, loadStatus,loadTracks } =
+export const { loadSectors, loadStates, loadEvents, loadStatus, loadTracks } =
     constantsSlice.actions;

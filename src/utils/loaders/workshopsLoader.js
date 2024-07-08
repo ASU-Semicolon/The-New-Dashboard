@@ -19,7 +19,7 @@ async function loadStates() {
     const token = getToken();
 
     const response = await fetch(
-       `${import.meta.env.VITE_URL}/api/constants?type=workshop-states`,
+        `${import.meta.env.VITE_URL}/api/constants?type=workshop-states`,
         {
             headers: {
                 Authorization: "Bearer " + token,

@@ -12,6 +12,7 @@ import candidatesToUsers from "../../utils/dataToCards/candidatesToUsers";
 import { useMemo, useState } from "react";
 import filterArray from "../../utils/filterArray";
 import Loader from "../../components/loader/loader.component";
+import useDocumentTitle from "../../hooks/documentTitle";
 function StudentsPage() {
     const [searchParams] = useSearchParams();
     const studentsData = useSelector((state) => state.students);
@@ -26,7 +27,7 @@ function StudentsPage() {
         candidates: students,
         events,
         candidateStatus: status,
-        tracks
+        tracks,
     } = useLoaderData();
     const [filteredStudents, setFilteredStudents] = useState([]);
     const unFilteredStudents = useMemo(
@@ -40,6 +41,7 @@ function StudentsPage() {
     useFetchData(events, loadEvents);
     useFetchData(status, loadStatus);
     useFetchData(tracks, loadTracks);
+    useDocumentTitle("Students - Semicolon");
     const isFetching = useFetchData(students, loadStudents);
     const selectedStudent = useSelectCandidate(
         filteredStudentsData,

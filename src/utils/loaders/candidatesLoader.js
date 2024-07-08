@@ -26,7 +26,7 @@ async function loadEvents() {
     const token = getToken();
 
     const response = await fetch(
-       `${import.meta.env.VITE_URL}/api/constants?type=events`,
+        `${import.meta.env.VITE_URL}/api/constants?type=events`,
         {
             headers: {
                 Authorization: "Bearer " + token,
@@ -40,7 +40,7 @@ async function loadTracks() {
     const token = getToken();
 
     const response = await fetch(
-       `${import.meta.env.VITE_URL}/api/constants?type=workshop-tracks`,
+        `${import.meta.env.VITE_URL}/api/constants?type=workshop-tracks`,
         {
             headers: {
                 Authorization: "Bearer " + token,
@@ -63,6 +63,6 @@ export default async function loader({ request }) {
         candidates: loadCandidates(type, event),
         events: loadEvents(),
         candidateStatus: loadCandidateStatus(),
-        tracks:loadTracks()
+        tracks: loadTracks(),
     });
 }
