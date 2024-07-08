@@ -28,6 +28,7 @@ import useHandleData from "../../hooks/handleData";
 import useFetchData from "../../hooks/fetchData";
 import { loadStates } from "../../store/constants";
 import Loader from "../../components/loader/loader.component";
+import useDocumentTitle from "../../hooks/documentTitle";
 function Workshops() {
     const { users, committees, workshops, states } = useLoaderData();
     const { isAdmin } = useRouteLoaderData("root");
@@ -55,6 +56,7 @@ function Workshops() {
         editData: editWorkshop,
         deleteData: deleteWorkshop,
     });
+    useDocumentTitle("Workshops - Semicolon");
     const filteredWorkshops = workshopsData.filter((workshop) => {
         if (workshop.Season === selectedYear) {
             return workshop.Title.toLowerCase().includes(

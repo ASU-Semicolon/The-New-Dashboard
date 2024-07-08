@@ -13,6 +13,7 @@ import { useMemo, useState } from "react";
 import filterArray from "../../utils/filterArray";
 import { loadMembers } from "../../store/members";
 import Loader from "../../components/loader/loader.component";
+import useDocumentTitle from "../../hooks/documentTitle";
 function MembersPage() {
     const [searchParams] = useSearchParams();
     const membersData = useSelector((state) => state.members);
@@ -26,7 +27,7 @@ function MembersPage() {
         candidates: members,
         events,
         candidateStatus: status,
-        tracks
+        tracks,
     } = useLoaderData();
     const [filteredMembers, setFilteredMembers] = useState([]);
     const unFilteredMembers = useMemo(
@@ -37,6 +38,7 @@ function MembersPage() {
         () => filterArray(membersData, filteredMembers),
         [membersData, filteredMembers],
     );
+    useDocumentTitle("Members - Semicolon");
     useFetchData(events, loadEvents);
     useFetchData(status, loadStatus);
     useFetchData(tracks, loadTracks);

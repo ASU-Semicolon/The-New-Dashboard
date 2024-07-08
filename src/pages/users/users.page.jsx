@@ -4,19 +4,20 @@ import SearchBar from "../../components/search-bar/search.component";
 import Dropdown from "../../components/dropdown/dropdown.component";
 import Modal from "../../components/modal/modal.component";
 import ModalForm from "../../components/form/form.component";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useHandleData from "../../hooks/handleData";
 import { IoIosAdd } from "react-icons/io";
 import { loadUsers, deleteUser, editUser, addUser } from "../../store/users";
 import "./users.style.css";
 import { loadCommittees } from "../../store/committees";
-import { useDispatch, useSelector } from "react-redux";
-import { useLoaderData, useActionData, useNavigation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLoaderData, useActionData } from "react-router-dom";
 import usersToCards from "../../utils/dataToCards/usersToCards";
 import { addUserFormData } from "../../utils/formsData";
 import createAvaialbleYears from "../../utils/createAvaiableYears";
 import useFetchData from "../../hooks/fetchData";
 import Loader from "../../components/loader/loader.component";
+import useDocumentTitle from "../../hooks/documentTitle";
 function Users() {
     const { users, committees } = useLoaderData();
     const userData = useActionData();
@@ -32,6 +33,7 @@ function Users() {
     const isLoading = isfetching && usersData.length === 0;
     const isLoadingCommittees =
         isFetchingCommittees && committeesData.length === 0;
+    useDocumentTitle("Users - Semicolon");
     const filteredUsers = usersData.filter((user) => {
         if (user.Season === selectedYear) {
             return (

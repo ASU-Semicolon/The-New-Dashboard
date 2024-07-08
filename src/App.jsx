@@ -5,11 +5,11 @@ import UsersPage from "./pages/users/users.page";
 import StudentsPage from "./pages/students/students.page";
 import CommitteesPage from "./pages/committees/committees.page";
 import WorkshopsPage from "./pages/workshops/workshops.page";
-import  loginAction  from "./utils/actions/loginAction";
+import loginAction from "./utils/actions/loginAction";
 import workshopsAction from "./utils/actions/workshopsAction";
 import committeesAction from "./utils/actions/committeesAction";
 import candidateAction from "./utils/actions/candidateAction";
-import {  RouterProvider , createHashRouter} from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import usersLoader from "./utils/loaders/usersLoader";
 import authLoader from "./utils/loaders/authLoader";
 import homeLoader from "./utils/loaders/homeLoader";
@@ -71,6 +71,5 @@ const router = createHashRouter([
 function App() {
     return <RouterProvider router={router} />;
 }
-
 
 export default App;

@@ -26,6 +26,7 @@ import {
     editCommittee,
 } from "../../store/committees";
 import Loader from "../../components/loader/loader.component";
+import useDocumentTitle from "../../hooks/documentTitle";
 function Committees() {
     const { committees, sectors } = useLoaderData();
     const { isAdmin } = useRouteLoaderData("root");
@@ -60,7 +61,7 @@ function Committees() {
         editData: editCommittee,
         deleteData: deleteCommittee,
     });
-
+    useDocumentTitle("Committees - Semicolon");
     return (
         <>
             <Modal setShowModal={setShowModal} showModal={showModal}>

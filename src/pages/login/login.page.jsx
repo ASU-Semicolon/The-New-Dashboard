@@ -1,13 +1,15 @@
 import NavBar from "../../components/navBar/navBar.component";
 import InputWithLabel from "../../components/Input-with-label/Input-with-label.component";
 import Button from "../../components/button/button.component";
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 import "./login.style.css";
 import { useEffect, useState } from "react";
+import useDocumentTitle from "../../hooks/documentTitle";
 function Login() {
     const navigation = useNavigation();
     const actionData = useActionData();
     const [errors, setErrors] = useState();
+    useDocumentTitle("Login - Semicolon");
     useEffect(() => {
         if (actionData) {
             if (typeof actionData.message === "string") {
