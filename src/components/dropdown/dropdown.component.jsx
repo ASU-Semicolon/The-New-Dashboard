@@ -28,7 +28,7 @@ const Dropdown = ({
     const dropdownRef = useRef(null);
 
     const handleOptionClick = (option) => {
-        if (option == "all") {
+        if (option.toLowerCase() == "all") {
             setSelectedOption(option);
             onSelect("");
         } else if (typeof option === "object") {
