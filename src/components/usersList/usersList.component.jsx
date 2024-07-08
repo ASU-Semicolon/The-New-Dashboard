@@ -3,6 +3,8 @@ import Dropdown from "../dropdown/dropdown.component";
 import SearchBar from "../search-bar/search.component";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./usersList.style.css";
+import Count from "../count/count.component";
+import useCandidateCount from "../../hooks/candidateCount";
 
 /**
  * @typedef {Object} User
@@ -52,13 +54,13 @@ function UsersList({
 }) {
     const location = useLocation();
     const navigate = useNavigate();
-
+    const [count,setCount]=useState(0)
     const searchParams = new URLSearchParams(location.search);
     const [searchInput, setSearchInput] = useState("");
     const [firstFilterValue, setFirstFilterValue] = useState("");
     const [secoundFilterValue, setsecoundtFilterValue] = useState("");
     const [thirdFilterValue, setThirdFilterValue] = useState("");
-
+    useCandidateCount(setCount,filteredUsers)
     useEffect(() => {
         if (backendFiltering[0]) {
             searchParams.set(firstFilterName.toLowerCase(), firstFilterValue);
@@ -175,6 +177,7 @@ function UsersList({
                     onSelect={setThirdFilterValue}
                     options={[...thirdFilterOptions, "All"]}
                 />
+                <Count count={count}/>
             </div>
             {filteredUsers.length > 0 ? (
                 <ul className="users-list">
