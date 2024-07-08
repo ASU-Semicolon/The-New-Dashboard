@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { loadStudents } from "../../store/students";
 import useFetchData from "../../hooks/fetchData";
 import useSelectCandidate from "../../hooks/selectCandidate";
-import { loadEvents, loadStatus } from "../../store/constants";
+import { loadEvents, loadStatus, loadTracks } from "../../store/constants";
 import candidateToCard from "../../utils/dataToCards/candidateToCard";
 import candidatesToUsers from "../../utils/dataToCards/candidatesToUsers";
 import { useMemo, useState } from "react";
@@ -19,12 +19,14 @@ function MembersPage() {
     const event = searchParams.get("event");
     const eventsData = useSelector((state) => state.constants.events);
     const statusData = useSelector((state) => state.constants.status);
+    const tracksData = useSelector((state) => state.constants.tracks);
     const type = searchParams.get("type");
     const { "*": memberId } = useParams();
     const {
         candidates: members,
         events,
         candidateStatus: status,
+        tracks
     } = useLoaderData();
     const [filteredMembers, setFilteredMembers] = useState([]);
     const unFilteredMembers = useMemo(
@@ -37,6 +39,7 @@ function MembersPage() {
     );
     useFetchData(events, loadEvents);
     useFetchData(status, loadStatus);
+    useFetchData(tracks, loadTracks);
     const isFetching = useFetchData(members, loadMembers);
     const selectedMember = useSelectCandidate(
         filteredMembersData,
@@ -63,13 +66,7 @@ function MembersPage() {
                     <div className="candidate__grid">
                         <UsersList
                             firstFilterName="track"
-                            firstFilterOptions={[
-                                "Frontend",
-                                "Backend",
-                                "Embedded",
-                                "DevOps",
-                                "Data Science",
-                            ]}
+                            firstFilterOptions={tracksData}
                             searchbarFilters={["name", "phone"]}
                             searchbarPlaceholder="Name or Phone"
                             secoundFilterOptions={statusData}

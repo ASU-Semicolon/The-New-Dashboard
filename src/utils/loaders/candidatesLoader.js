@@ -36,6 +36,20 @@ async function loadEvents() {
     const { data } = await response.json();
     return data;
 }
+async function loadTracks() {
+    const token = getToken();
+
+    const response = await fetch(
+       `${import.meta.env.VITE_URL}/api/constants?type=workshop-tracks`,
+        {
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+        },
+    );
+    const { data } = await response.json();
+    return data;
+}
 export default async function loader({ request }) {
     const token = getToken();
     const url = new URL(request.url);
@@ -49,5 +63,6 @@ export default async function loader({ request }) {
         candidates: loadCandidates(type, event),
         events: loadEvents(),
         candidateStatus: loadCandidateStatus(),
+        tracks:loadTracks()
     });
 }
