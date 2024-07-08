@@ -60,7 +60,7 @@ function UsersList({
     const [thirdFilterValue, setThirdFilterValue] = useState("");
 
     useEffect(() => {
-        if (backendFiltering[0] && firstFilterValue) {
+        if (backendFiltering[0]) {
             searchParams.set(firstFilterName.toLowerCase(), firstFilterValue);
             navigate(`${location.pathname}?${searchParams.toString()}`, {
                 replace: true,
@@ -69,7 +69,7 @@ function UsersList({
     }, [firstFilterValue]);
 
     useEffect(() => {
-        if (backendFiltering[1] && secoundFilterValue) {
+        if (backendFiltering[1]) {
             searchParams.set(
                 secoundFilterName.toLowerCase(),
                 secoundFilterValue,
@@ -81,7 +81,7 @@ function UsersList({
     }, [secoundFilterValue]);
 
     useEffect(() => {
-        if (backendFiltering[2] && thirdFilterValue) {
+        if (backendFiltering[2]) {
             searchParams.set(thirdFilterName.toLowerCase(), thirdFilterValue);
             navigate(`${location.pathname}?${searchParams.toString()}`, {
                 replace: true,
@@ -158,7 +158,7 @@ function UsersList({
                         firstFilterName.length > 0 ? firstFilterName : undefined
                     }
                     onSelect={setFirstFilterValue}
-                    options={firstFilterOptions}
+                    options={[...firstFilterOptions, "All"]}
                 />
                 <Dropdown
                     paddingSize="big"
@@ -168,12 +168,12 @@ function UsersList({
                             : undefined
                     }
                     onSelect={setsecoundtFilterValue}
-                    options={secoundFilterOptions}
+                    options={[...secoundFilterOptions, "All"]}
                 />
                 <Dropdown
                     deafultValue={thirdFilterDefaultValue || thirdFilterName}
                     onSelect={setThirdFilterValue}
-                    options={thirdFilterOptions}
+                    options={[...thirdFilterOptions, "All"]}
                 />
             </div>
             {filteredUsers.length > 0 ? (
