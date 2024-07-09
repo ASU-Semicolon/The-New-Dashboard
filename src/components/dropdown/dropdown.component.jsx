@@ -28,12 +28,12 @@ const Dropdown = ({
     const dropdownRef = useRef(null);
 
     const handleOptionClick = (option) => {
-        if (option.toLowerCase() == "all") {
-            setSelectedOption(option);
-            onSelect("");
-        } else if (typeof option === "object") {
+          if (typeof option === "object") {
             setSelectedOption(option.name.toLowerCase());
             onSelect(option.value.toLowerCase());
+        }else if (typeof option==='string'&&option.toLowerCase() == "all") {
+            setSelectedOption(option);
+            onSelect("");
         } else {
             setSelectedOption(option);
             onSelect(option);
