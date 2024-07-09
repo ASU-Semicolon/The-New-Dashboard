@@ -6,8 +6,9 @@
     margin: 2rem auto;
     width: 34.75rem;
     overflow-y: scroll;
-    max-height: 92vh;
+    max-height: 90svh;
     clip-path: inset(0 0 0 0 round 7px);
+    
 }
 
 .modal[open] {
@@ -67,4 +68,15 @@
 }
 .modal::backdrop {
     background-color: rgba(110, 118, 129, 0.4);
+}
+
+@media (max-width:43.75em) {
+    .modal{
+        max-height: 85svh;
+        max-width: 82.5%;
+       
+        transform: translate(0,3%);
+    }
+  
+    
 }
