@@ -19,7 +19,6 @@ async function loadCandidates(type, event) {
     });
 
     const { data } = await response.json();
-console.log(data)
     return data;
 }
 async function loadEvents() {

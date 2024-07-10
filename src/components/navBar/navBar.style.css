@@ -38,7 +38,7 @@ header {
     }
     .show-menu .nav__menu li {
         padding-top: 2rem;
-        font-size: 1.6rem;
+        font-size: 26px;
         text-align: center;
     }
     .nav__close {

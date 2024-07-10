@@ -13,7 +13,9 @@
     padding-bottom: 0;
     border-bottom: none;
 }
-.description.user_info__item{
-
+.description.user_info__item {
     word-break: break-word;
+}
+.description.user_info__item p {
+    padding-right: 2.75rem;
 }

@@ -32,8 +32,8 @@ export default function candidatesToCards(candidate) {
                 }
                 case "email":
                 case "phone":
-                case 'department':
-                case 'specialization':
+                case "department":
+                case "specialization":
                 case "academicyear":
                 case "track":
                 case "college": {

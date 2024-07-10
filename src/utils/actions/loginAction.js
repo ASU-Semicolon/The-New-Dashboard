@@ -16,7 +16,6 @@ export default async function action({ request }) {
             },
         },
     );
-    console.log(response);
     if (response.status !== 201) {
         return response;
     }

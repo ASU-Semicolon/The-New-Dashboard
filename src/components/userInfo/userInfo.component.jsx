@@ -16,10 +16,9 @@ function UserInfo({ userInfo = {} }) {
     return (
         <ul className="user_info">
             {Object.keys(userInfo).map((info) => (
-                <li
-                    key={info}
-                    className=" description user_info__item"
-                >{`${info}: ${userInfo[info]}`}</li>
+                <li key={info} className=" description user_info__item">
+                    <p> {`${info}: ${userInfo[info]}`}</p>
+                </li>
             ))}
         </ul>
     );

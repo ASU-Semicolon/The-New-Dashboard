@@ -61,7 +61,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.end.title__cont{
+.end.title__cont {
     align-items: flex-end;
 }
 .loading_text {
