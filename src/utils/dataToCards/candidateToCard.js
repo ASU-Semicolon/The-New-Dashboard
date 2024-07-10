@@ -18,7 +18,7 @@ export default function candidatesToCards(candidate) {
                             field === "FirstPreference"
                                 ? "first preference"
                                 : "second preference",
-                        cardDescription: candidate[field + "Reason"],
+                        cardDescription: `${candidate[field]} - ${candidate[field + "Reason"]}`,
                     };
                     break;
                 }

@@ -88,10 +88,10 @@ body {
 .description {
     font-size: 0.875rem;
     font-weight: 400;
-    line-height: 1.037rem;
+    line-height: 16.59px;
     color: #fff;
+    word-break: break-all;
 }
 textarea {
     resize: none;
-    /* overflow-x: scroll; */
 }

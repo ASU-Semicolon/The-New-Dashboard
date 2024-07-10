@@ -13,3 +13,7 @@
     padding-bottom: 0;
     border-bottom: none;
 }
+.description.user_info__item{
+
+    word-break: break-word;
+}
