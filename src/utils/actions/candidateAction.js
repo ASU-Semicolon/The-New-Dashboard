@@ -11,12 +11,8 @@ export default async function action({ request }) {
     const formData = Object.fromEntries(data.entries());
     delete formData.id;
     const token = getToken();
-    const isAdmin = isUserAdmin();
     if (!token) {
         return redirect("/login");
-    }
-    if (!isAdmin) {
-        return redirect("/committees");
     }
 
     const requestFormData = {};
